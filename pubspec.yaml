@@ -1,0 +1,39 @@
+name: example222
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  # image_picker: ^0.6.7+17
+  percent_indicator: ^4.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - assets/image/tosun.png
+    - assets/image/mapmoryTXT.png
+    - assets/image/map.png
+  uses-material-design: true
+  
+  # fonts:
+  #   - family: GmarketSansTTF
+  #     fonts:
+  #       - assets: assets/fonts/GmarketSansTTFBold.ttf
+  #       - assets: assets/fonts/GmarketSansTTFLight.ttf
+  #       - assets: assets/fonts/GmarketSansTTFMedium.ttf
+
+
