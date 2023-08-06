@@ -34,7 +34,7 @@ def login(request):
         user = auth.authenticate(request, custom_id=custom_id, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('home.html') # 로그인 성공 시 이동할 URL 연결할 곳
+            return redirect('home') # 로그인 성공 시 이동할 URL 연결할 곳
         else:
             return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
     else:
