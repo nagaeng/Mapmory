@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import '_1login.dart';
+// import 'package:logger/logger.dart';
 
 class Membership extends StatefulWidget {
   const Membership({Key? key, required this.title}) : super(key: key);
@@ -10,6 +13,55 @@ class Membership extends StatefulWidget {
 }
 
 class MembershipState extends State<Membership> {
+  // TextEditingController를 사용하여 입력된 값을 가져올 수 있도록 하기.
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
+  void sendMembershipData() async {
+    // 백엔드 API 엔드포인트의 URL
+    const String apiUrl = 'http://127.0.0.1:8000/accounts/signup/';
+
+    try {
+      // POST 요청에 보낼 데이터를 Map 형태로 구성합니다.
+      Map<String, dynamic> data = {
+        'username': usernameController.text,
+        'password': passwordController.text,
+        'confirmPassword': confirmPasswordController.text,
+        'email': emailController.text,
+      };
+
+      // POST 요청 보내기
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(data),
+      );
+
+      if (response.statusCode == 200) {
+        // 서버에서의 응답을 파싱합니다. (생략 가능)
+        final responseData = jsonDecode(response.body);
+        // 데이터를 처리하는 로직을 구현합니다. (생략 가능)
+        print(responseData);
+
+        // 회원가입 성공 시 로그인으로 화면 전환
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => const MyLogin(
+                      title: 'Next',
+                    )));
+      } else {
+        // 에러 처리
+        // print('POST 요청 실패: ${response.statusCode}');
+      }
+    } catch (e) {
+      // 네트워크 에러 처리
+      //print('네트워크 에러: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +107,8 @@ class MembershipState extends State<Membership> {
                   child: SizedBox(
                     width: 250,
                     height: 32,
-                    child: TextField(
+                    child: TextFormField(
+                      controller: usernameController,
                       decoration: InputDecoration(
                         // hintText: '아이디',
                         filled: true,
@@ -96,7 +149,8 @@ class MembershipState extends State<Membership> {
                   child: SizedBox(
                     width: 250,
                     height: 32,
-                    child: TextField(
+                    child: TextFormField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                         // hintText: '비밀번호',
                         filled: true,
@@ -137,7 +191,8 @@ class MembershipState extends State<Membership> {
                   child: SizedBox(
                     width: 250,
                     height: 32,
-                    child: TextField(
+                    child: TextFormField(
+                      controller: confirmPasswordController,
                       decoration: InputDecoration(
                         // hintText: '비밀번호',
                         filled: true,
@@ -179,7 +234,8 @@ class MembershipState extends State<Membership> {
                   child: SizedBox(
                     width: 250,
                     height: 32,
-                    child: TextField(
+                    child: TextFormField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         // hintText: '비밀번호',
                         filled: true,
@@ -219,6 +275,7 @@ class MembershipState extends State<Membership> {
                   height: 30,
                   child: TextButton(
                     onPressed: () {
+                      sendMembershipData;
                       // Navigator.pop(context);
                       Navigator.push(
                           context,
