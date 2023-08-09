@@ -70,10 +70,12 @@ class ResetPasswordPageState extends State<ResetPasswordPage> {
                 ElevatedButton(
                   onPressed: () {
                     // 여기서 서버에 새로운 비밀번호를 전송하거나 다른 처리를 수행할 수 있음
+                    // ignore: avoid_print
                     print('새로운 비밀번호: $newPassword');
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
+                    // ignore: deprecated_member_use
                     primary:
                         const Color(0xC9FFF0EF), // 배경색을 Color(0xC9FFF0EF)로 설정
                   ),
