@@ -19,8 +19,7 @@ def signup(request):
                 password=password,
                 email=email,
             )
-            print("User created:", user.username, user.email)
-            login(request, user)
+            login(request, user=user)
             return redirect('login_view') # 회원가입 성공 시 이동할 URL 연결할 곳
         return render(request, 'signup.html')
     return render(request, 'signup.html')
@@ -32,12 +31,9 @@ def login_view(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
-            print("User logged in:", user.username, user.email)
-            print("User password:", user.password)
+            login(request, user=user)
             return redirect('home') # 로그인 성공 시 이동할 URL 연결할 곳
         else:
-            print("Login failed for user:", username)
             return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
     else:
         return render(request, 'login.html')
