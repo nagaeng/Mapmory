@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import post_form_view, get_hashtag_json, create_post
 
 urlpatterns = [
-    path('selct_hashtag/', views.select_hashtag, name='해시태그 선택'),
-    path('post/', views.create, name='글쓰기'),
+    path('post_form/', post_form_view, name='post_form'),
+    path('hashtag/', get_hashtag_json,name='해시태그 선택'),
+    path('create_post/<int:custom_id>/', create_post, name='글쓰기'),
 ]
