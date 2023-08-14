@@ -19,10 +19,11 @@ def mypage_view(request):
 
 @login_required
 def edit_profile(request):
-    user_profile, created = UserProfile.objects.get(user=request.user)
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
     #프로필 생성됨 -> 디폴트 값 생성
     if created:
+        user_profile.nickname = "nickname"
         user_profile.age = 20
         user_profile.hashtags = ["#Silent", "#The_Hip", "#For_E"]
         user_profile.travel_style = "Adventure"

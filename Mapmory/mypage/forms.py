@@ -4,4 +4,5 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['profile_picture', 'nickname', 'age', 'travel_style', 'keywords']
+        fields = ['profile_picture', 'nickname', 'age', 'travel_style']
+        # keywords있었음
