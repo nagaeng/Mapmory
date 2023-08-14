@@ -33,7 +33,7 @@ def edit_profile(request):
         selected_hashtags = request.POST.getlist('hashtags')
         if form.is_valid():
             form.save()
-            return redirect('mypage:my_profile')
+            return redirect('mypage:mypage')
 
     else:
         form = UserProfileForm(instance=user_profile)
