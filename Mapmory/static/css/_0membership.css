@@ -1,0 +1,9 @@
+.container > .membershipInfo{
+    width: 231px; height: 33px; 
+    left: 130px; top: 212px; position: absolute; 
+    background: #FFFFEA; 
+    border-radius: 15px; border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+    border: none;
+    float: left;
+}
+
