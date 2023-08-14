@@ -1,0 +1,9 @@
+<ul>
+    {% for post in user_posts %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <a href="{% url 'post:edit_post' post.username %}">수정</a>
+        </li>
+    {% endfor %}
+</ul>

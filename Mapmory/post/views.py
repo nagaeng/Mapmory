@@ -74,6 +74,3 @@ def create_post(request, custom_id):
     else:
         form = PostForm()
     return render(request, 'post.html', {'form':form, 'selected_hashtags':selected_hashtags})
-
-
-

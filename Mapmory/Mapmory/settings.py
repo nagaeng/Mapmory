@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'post',
     'rest_framework',
     'accounts',
+    'mypage',
 ]
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -130,5 +131,5 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = 'login_view'  # 로그인 URL을 실제로 사용하는 이름으로 변경
+LOGIN_URL = 'mypage'  # 로그인 URL을 실제로 사용하는 이름으로 변경
 LOGOUT_URL = 'login_view'  # 로그아웃 URL을 실제로 사용하는 이름으로 변경

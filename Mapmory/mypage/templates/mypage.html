@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>마이페이지</title>
+</head>
+<body>
+    <h1>환영합니다, {{ user_profile.user.username }}님!</h1>
+    <p>이메일: {{ user_profile.user.email }}</p>
+    <p>프로필 사진: <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진"></p>
+    <p>나이: {{ user_profile.age }}</p>
+    <p>여행 스타일: {{ user_profile.travel_style }}</p>
+    <p>자주 쓰는 키워드: {{ user_profile.keywords }}</p>
+
+    <h2>내 정보 수정하기</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="profile_picture">프로필 사진 변경:</label>
+        <input type="file" name="profile_picture">
+        <label for="age">나이:</label>
+        <input type="number" name="age" value="{{ user_profile.age }}">
+        <label for="travel_style">여행 스타일:</label>
+        <input type="text" name="travel_style" value="{{ user_profile.travel_style }}">
+        <label for="keywords">자주 쓰는 키워드:</label>
+        <input type="text" name="keywords" value="{{ user_profile.keywords }}">
+        <button type="submit">업데이트</button>
+    </form>
+
+    <h2>내가 쓴 글</h2>
+    <ul>
+        {% for post in user_posts %}
+        <li><a href="{% url 'mypage:edit_post' post.username %}">글 수정: {{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

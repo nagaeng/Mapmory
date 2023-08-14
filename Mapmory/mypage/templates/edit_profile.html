@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>edit_profile</title>
+</head>
+<body>
+    <h1>내 정보 수정하기</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <label for="hashtags">자주 쓰는 해시태그 선택:</label>
+        <select name="hashtags" multiple size="3">
+            {% for tag in hashtag_list %}
+                <option value="{{ tag.name }}">{{ tag.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">저장</button>
+    </form>
+</body>
+</html>
