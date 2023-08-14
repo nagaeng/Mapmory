@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'mypage',
 ]
+
+SESSION_ENGINE ='django.contrib.sessions.backends.db'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
