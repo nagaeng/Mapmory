@@ -17,3 +17,6 @@ class Post(models.Model):
     hashtag = models.ManyToManyField(Hashtag)
     datetime = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+

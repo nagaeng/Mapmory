@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
 ]
+
+SESSION_ENGINE ='django.contrib.sessions.backends.db'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
