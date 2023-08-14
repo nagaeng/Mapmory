@@ -22,7 +22,7 @@ def post_form_view(request):
     if request.method == 'POST':
         selected_hashtags = request.POST.getlist('hashtags')
         request.session['selected_hashtags'] = selected_hashtags
-        return redirect('create_post', custom_id=request.user.id)
+        return redirect('post:create_post', username=request.user.id)
     return render(request, 'hashtag.html', {'hashtags':hashtags})
 
 #json 데이터 확인
@@ -53,15 +53,15 @@ def get_hashtag_json(request):
     return JsonResponse(hashtag, safe=False) 
 
 @login_required
-def create_post(request, custom_id):
-    print(custom_id)
-    user = get_object_or_404(CustomUser, pk=custom_id)
-    custom_id = custom_id
+def create_post(request, username):
+    #print(custom_id)
+    user = get_object_or_404(CustomUser, pk=username)
+    #custom_id = custom_id
 
     selected_hashtags = request.session.get('selected_hashtags',[])
-
     if request.method == 'POST':
         form = PostForm(request.POST)
+        form = PostForm(request.POST, selected_hashtags=selected_hashtags)
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
@@ -70,10 +70,16 @@ def create_post(request, custom_id):
             for hashtag_name in selected_hashtags:
                 hashtag, created = Hashtag.objects.get_or_create(name=hashtag_name)
                 post.hashtag.add(hashtag)
-            return redirect('end')
+            return redirect('post:end')
     else:
         form = PostForm()
-    return render(request, 'post.html', {'form':form, 'selected_hashtags':selected_hashtags})
+        form = PostForm(selected_hashtags=selected_hashtags)
+    return render(request, 'post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
+
+def end_view(request):
+    return render(request, 'end.html')
+
+
 
 
 

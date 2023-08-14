@@ -31,8 +31,8 @@ def login_view(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            auth.login(request, user)
-            return redirect('end.html') # 로그인 성공 시 이동할 URL 연결할 곳
+            login(request, user=user)
+            return redirect('post:post_form') # 로그인 성공 시 이동할 URL 연결할 곳
         else:
             return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
     else:

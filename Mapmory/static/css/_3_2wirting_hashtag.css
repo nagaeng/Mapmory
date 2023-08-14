@@ -1,117 +1,8 @@
-.food > .foodHashtag > .f{
-    width: 66px;
-    height: 23px; 
-    color: #545454;
-    font-size: 15px;
-    font-weight: 100;
-    text-align: center;
-    justify-content: center; 
-    align-items: center; 
-    display: inline-flex;
-    text-decoration: none;
-    position: absolute; 
-    background-color: #FFFFEA; 
-    box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.10); 
-    border-radius: 10px; 
-}
-
-.food > .foodText{
-    width: 59px; height: 29px; 
-    left: 0px; top: 0px; 
-    position: absolute; 
-    text-align: center; 
-    color: #545454; 
-    font-size: 20px;
-    font-weight: 500; 
-    line-height: 20px; 
-    word-wrap: break-word;
-}
-
-.food > .foodBox{
-    width: 311px; height: 65px; 
-    left: 5px; top: 29px; 
-    position: absolute; 
-    background: rgba(210, 232, 154, 0.79); 
-    border-radius: 10px; 
-    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
-}
-
-.reason > .reasonHashtag > .r{
-    color: #545454;
-    font-size: 15px;
-    font-weight: 100;
-    text-align: center;
-    justify-content: center; 
-    align-items: center; 
-    display: inline-flex;
-    text-decoration: none;
-    position: absolute; 
-    background: #FFFFEA; 
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08); 
-    border-radius: 10px;
-}
-
-.reason > .reasonBox{
-    width: 311px; height: 131px; 
-    left: 5px; top: 28.64px; 
-    position: absolute; 
-    background: rgba(210, 232, 154, 0.79); 
-    border-radius: 10px; 
-    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
-}
-
-.reason > .reasonText{
-    width: 105px; height: 29px; 
-    left: 0px; top: 0px; 
-    position: absolute; 
-    text-align: center; 
-    color: #545454;
-    font-size: 20px; 
-    font-weight: 500; 
-    line-height: 20px; 
-    word-wrap: break-word;
-}
-
-.atomosphere > .atomoshereHashtag > .a{
-    color: #545454;
-    font-size: 15px;
-    font-weight: 100;
-    text-align: center;
-    justify-content: center; 
-    align-items: center; 
-    display: inline-flex;
-    text-decoration: none;
-    position: absolute; 
-    background: #FFFFEA; 
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08); 
-    border-radius: 10px;
-}
-
-.atomosphere > .atomoshereText{
-    width: 73px; height: 29px; 
-    left: 0px; top: 0px; position: absolute; 
-    text-align: center; 
-    color: #545454; 
-    font-size: 20px;
-    font-weight: 500; 
-    line-height: 20px; 
-    word-wrap: break-word;
-}
-
-.atomosphere > .atmosphereBox{
-    width: 311px; height: 93px; left: 7px; top: 29px; 
-    position: absolute; 
-    background: rgba(210, 232, 154, 0.79); 
-    border-radius: 10px; 
-    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
-}
-
-
-
-.btn > a{
+.btn > form > a{
     width: 62px; height: 26px; 
     background-color: #FFFFEA; 
     border-radius: 50px;
+    border-color: #545454;
     position: absolute; 
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06); 
     justify-content: center; 
@@ -123,6 +14,35 @@
     font-size: 15px; 
     font-weight: 300;
 }
+
+.hashtag1{
+    padding-left: 10px;
+    width: 311px; height: 170px; 
+    left: 44px; top: 107.50px;
+    position: absolute; background: rgba(210, 232, 154, 0.79); 
+    border-radius: 10px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
+.hashtag2{
+    padding-left: 10px;
+    width: 311px; height: 135px; 
+    left: 43px; top: 295.50px; 
+    position: absolute; 
+    background: rgba(210, 232, 154, 0.79); 
+    border-radius: 10px; border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
+.hashtag3{
+    padding-left: 10px;
+    width: 311px; height: 181px; 
+    left: 42px; top: 440.14px; 
+    position: absolute; 
+    background: rgba(210, 232, 154, 0.79); 
+    border-radius: 10px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
 
 /*네비바*/
 .naviBar > .naviBackground{
