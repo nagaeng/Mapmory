@@ -73,7 +73,7 @@ def create_post(request, username):
             return redirect('end')
     else:
         form = PostForm()
-    return render(request, 'html/post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
+    return render(request, 'post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
 
 
 
