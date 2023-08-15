@@ -61,7 +61,7 @@ def create_post(request, username):
     selected_hashtags = request.session.get('selected_hashtags',[])
     if request.method == 'POST':
         form = PostForm(request.POST)
-        form = PostForm(request.POST, selected_hashtags=selected_hashtags)
+        #form = PostForm(request.POST, selected_hashtags=selected_hashtags)
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
@@ -73,7 +73,7 @@ def create_post(request, username):
             return redirect('post:end')
     else:
         form = PostForm()
-        form = PostForm(selected_hashtags=selected_hashtags)
+       # form = PostForm(selected_hashtags=selected_hashtags)
     return render(request, 'post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
 
 def end_view(request):
