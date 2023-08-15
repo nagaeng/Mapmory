@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        
-    </head>
-    <body>
-        <div>
-            <h1>홈 화면을 구현 중입니다</h1><br>
-            <h3>로그인 성공시 들어와지는 페이지</h3><br>
-            <h3><a href={% url 'signup' %}>회원가입</a></h3>
-            <h3><a href={% url 'login_view' %}>로그인</a></h3>
-        </div>
-    </body>
-</html>
+<head>
+</head>
+<body>
+    <div>
+        <h1>홈 화면을 구현 중입니다</h1><br>
+        <h3>로그인 성공</h3><br>
+        <h3><a href={% url 'signup' %}>회원가입</a></h3>
+        <h3><a href={% url 'login_view' %}>로그인</a></h3>
+        <h3><a href={% url 'mypage:mypage' %}>마이페이지</a></h3> 
+        <h3><a href={% url 'post:post_form' %}>글쓰기</a></h3> 
+    </div>
+</body>

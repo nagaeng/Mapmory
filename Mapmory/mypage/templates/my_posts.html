@@ -1,0 +1,9 @@
+<ul>
+    {% for post in user_posts %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.contents }}</p>
+            <!-- <a href="{% url 'mypage:edit_post' post.id %}">수정</a> -->
+        </li>
+    {% endfor %}
+</ul>
