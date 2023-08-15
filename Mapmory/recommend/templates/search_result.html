@@ -1,0 +1,16 @@
+{% block content %}
+<form>
+  {% csrf_token %}
+  <input type="text" name="keyword">
+</form>
+
+<div class="content">
+  <div id="title">{{ keyword }}추천 장소</div>
+
+  <div class="image_box">
+      {% for p in post %}
+          <div id="image_box">{{ p.title }}</div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
