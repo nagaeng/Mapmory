@@ -1,0 +1,7 @@
+{% block content %}
+<form>
+    {% csrf_token %}
+    <input type="text" name="keyword">
+</form>
+    <div>검색 결과가 없습니다.</div>
+{% endblock %}
