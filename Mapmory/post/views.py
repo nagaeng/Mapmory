@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Post,Hashtag
+from .models import Post, Hashtag
 from .forms import PostForm
 from accounts.models import CustomUser
 from django.contrib.auth.decorators import login_required
@@ -73,7 +73,7 @@ def create_post(request, username):
             return redirect('post:end')
     else:
         form = PostForm()
-       # form = PostForm(selected_hashtags=selected_hashtags)
+        #form = PostForm(selected_hashtags=selected_hashtags)
     return render(request, 'post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
 
 def end_view(request):
