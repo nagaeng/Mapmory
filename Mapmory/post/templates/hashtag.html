@@ -51,7 +51,7 @@
             hashtagsData.forEach(hashtag => {
                 const name = hashtag.fields.name;
                 checkboxesHTML += `<input type="checkbox" name="hashtags" value="${name}">
-                                  <label>${name}</label><br>`;
+                                <label>${name}</label><br>`;
             });
 
             container.innerHTML = checkboxesHTML;

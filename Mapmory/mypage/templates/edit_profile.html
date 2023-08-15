@@ -7,15 +7,56 @@
     <h1>내 정보 수정하기</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-
-        <label for="hashtags">자주 쓰는 해시태그 선택:</label>
+        <label for="{{ form.profile_picture.id_for_label }}">프로필 사진</label><br>
+        {% if form.instance.profile_picture %}
+            <img src="{{ form.instance.profile_picture.url }}" alt="프로필 사진">
+        {% endif %}<br>
+        {{ form.profile_picture }}
+        {% if form.profile_picture.errors %}
+            <ul class="errorlist">
+                {% for error in form.profile_picture.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br><br>
+        <label for="{{ form.nickname.id_for_label }}">닉네임: </label>
+        {{ form.nickname }}
+        {% if form.nickname.errors %}
+            <ul class="errorlist">
+                {% for error in form.nickname.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br><br>
+        <label for="{{ form.age.id_for_label }}">나이: </label>
+        {{ form.age }}
+        {% if form.age.errors %}
+            <ul class="errorlist">
+                {% for error in form.age.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br><br>
+        <label for="{{ form.travel_style.id_for_label }}">여행 스타일: </label>
+        {{ form.travel_style }}
+        {% if form.travel_style.errors %}
+            <ul class="errorlist">
+                {% for error in form.travel_style.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <br><br>
+        <label for="hashtags">자주 쓰는 해시태그 선택: </label>
         <select name="hashtags" multiple size="3">
             {% for tag in hashtag_list %}
                 <option value="{{ tag.name }}">{{ tag.name }}</option>
             {% endfor %}
         </select>
-
+        <br><br>
         <button type="submit">저장</button>
     </form>
 </body>

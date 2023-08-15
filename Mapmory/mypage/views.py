@@ -4,7 +4,8 @@ from .models import UserProfile
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from post.views import post_form_view
-from post.models import Post
+from post.models import Post, Hashtag
+from post.forms import PostForm
 from django.http import HttpResponseForbidden, Http404
 from django.http import JsonResponse
 import json
@@ -12,8 +13,6 @@ import json
 @login_required
 def mypage_view(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-
-    user_profile = UserProfile.objects.get(user=request.user)
     user_posts = Post.objects.filter(writer=request.user)
     return render(request, 'mypage.html', {'user_profile': user_profile, 'user_posts': user_posts})
 
@@ -33,9 +32,17 @@ def edit_profile(request):
         form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
         selected_hashtags = request.POST.getlist('hashtags')
         if form.is_valid():
-            form.save()
-            return redirect('mypage:mypage')
+            user_profile.nickname = form.cleaned_data['nickname']  # 닉네임 업데이트
+            user_profile.age = form.cleaned_data['age']
+            user_profile.travel_style = form.cleaned_data['travel_style']
+            user_profile.keywords.clear()
+            for hashtag_name in selected_hashtags:
+                hashtag, _ = Hashtag.objects.get_or_create(name=hashtag_name)
+                user_profile.keywords.add(hashtag)
 
+            user_profile.save()
+
+            return redirect('mypage:mypage')
     else:
         form = UserProfileForm(instance=user_profile)
     return render(request, 'edit_profile.html', {'form': form})
@@ -47,22 +54,28 @@ def view_post(request, username):
 
 @login_required
 def my_posts(request):
-    user_posts = Post.objects.filter(user=request.user)
+    user_posts = Post.objects.filter(writer=request.user)
     return render(request, 'my_posts.html', {'user_posts': user_posts})
 
 @login_required
-def edit_post(request, username): 
+def edit_post(request, post_id):
     try:
-        post = Post.objects.get(username=username)  
+        post = Post.objects.get(writer=request.user, id=post_id)
     except Post.DoesNotExist:
         raise Http404("글이 존재하지 않습니다.")
-
-    if post.author == request.user:
-        # 가져온 글 정보를 post_form 뷰로 전달하며 수정 페이지로 이동
-        return post_form_view(request, username=username)  
-    else:
+    
+    if post.writer != request.user:
         return HttpResponseForbidden("해당 글 작성자가 아닙니다.")
+    
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('mypage:mypage')
+    else:
+        form = PostForm(instance=post)
 
+    return render(request, 'edit_post.html', {'form': form})
 
 def get_hashtag_json(request):
     hashtag = [
