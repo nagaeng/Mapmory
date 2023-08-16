@@ -10,6 +10,10 @@ from django.contrib.auth.hashers import check_password
 from django.contrib import messages, auth
 # 연결된 이메일
 from django.contrib.auth.models import AnonymousUser
+
+#환경설정 홈
+def config_home(request):
+  return render(request, 'config_home.html')
 # 언어 변경
 def set_language(request):
     if request.method == 'POST':
@@ -32,7 +36,7 @@ def change_password(request):
         user.save()
         messages.success(request, 'Password has been changed successfully.')
         auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        # return redirect('') # 비밀번호 변경 완료 후 넘어갈 페이지 url
+        return redirect('config_home') # 비밀번호 변경 완료 후 넘어갈 페이지 url
       else:
         messages.error(request, 'Password not same')
     else:

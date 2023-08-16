@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'mypage',
+    'config',
+    'recommend',
 ]
 
 SESSION_ENGINE ='django.contrib.sessions.backends.db'
@@ -49,6 +51,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -112,7 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko'
 
+
+TIME_ZONE = 'UTC'
+
 TIME_ZONE = 'Asia/Seoul'
+
 
 USE_I18N = True
 
