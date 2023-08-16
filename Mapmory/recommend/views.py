@@ -1,6 +1,6 @@
 # views.py
 from django.shortcuts import redirect, render
-
+from post.models import Post,Tag
 def search(request):
     if request.method == 'POST':
         keyword = request.POST.get('keyword')  # keyword를 입력받음
