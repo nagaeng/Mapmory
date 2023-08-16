@@ -14,13 +14,12 @@ urlpatterns = [
     path('post/', include('post.urls')),
     path('accounts/', include('accounts.urls')),
     path('mypage/', include('mypage.urls')),
-
-  
-    
-
     path('config/', include('config.urls')),
     path('recommend/', include('recommend.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  
 

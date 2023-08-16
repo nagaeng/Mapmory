@@ -2,13 +2,18 @@
 <html>
 <head>
     <title>{{ hashtag_name }} 관련 게시물</title>
-    <!-- 필요한 CSS 및 스타일링 링크 등을 포함합니다. -->
 </head>
 <body>
     <h1>{{ hashtag_name }} 관련 게시물</h1>
     <ul>
         {% for post in posts %}
-            <li><a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a></li>
+            <li>
+                <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
+                <br>
+                {% for photo in post.photo_set.all %}
+                    <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
+                {% endfor %}
+            </li>
         {% endfor %}
     </ul>
 </body>
