@@ -115,16 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko'
 
-LANGUAGES = [
-    ('ko', 'Korean'),
-    ('en', 'English'),
-]
-
-LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
-
-LANGUAGE_SESSION_KEY = 'my_language'
 
 TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'Asia/Seoul'
+
 
 USE_I18N = True
 

@@ -1,0 +1,68 @@
+/*나의정보수정하기제목*/
+.myinfoedit > .back{
+    width: 204px; height: 34px; 
+    left: 0px; top: 0px; position: absolute; 
+    background: rgba(255, 240, 239, 0.79); 
+    border-radius: 50px;
+     border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
+.myinfoedit > .text{
+    left: 15px; top: 8px; 
+    position: absolute; 
+    text-align: center; 
+    color: #545454; 
+    font-size: 24px; 
+    font-weight: 500; 
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+/* 네모난상자 */
+.nemoBack{
+    width: 334px; height: 437px; 
+    left: 30px; top: 129px;
+    position: absolute; 
+    background: rgba(255, 240, 239, 0.79); 
+    box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.10); 
+    border-radius: 10px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+/* 프로필사진 */
+.nemoBack > img{
+    padding-top: 10px; padding-left: 10px;
+}
+
+/* 닉네임 */
+.nickname{
+    padding-left: 10px;
+}
+/* 나이 */
+.age{
+    padding-left: 10px;
+}
+
+/* 여행스타일 */
+.travelSt{
+    padding-left: 10px;
+}
+
+/* 자주사용하는해시태그 */
+.usuallyUsedHT{
+    padding-left: 10px;
+}
+
+/* 수정하기버튼 */
+body > form > button{
+    width: 113px; height: 26px; 
+    background: #FFFFEA; border-radius: 50px;
+    left: 143px; top: 592px; 
+    position: absolute; 
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06); 
+    justify-content: center; 
+    align-items: center; 
+    display: inline-flex;
+    font-family: Gmarket Sans TTF;
+    font-weight: 400;
+    font-size: 16px;
+}
