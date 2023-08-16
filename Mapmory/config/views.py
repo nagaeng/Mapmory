@@ -46,3 +46,5 @@ def show_email(request):
     if isinstance(user, AnonymousUser):
       return render(request, 'email.html', {'email':None})
     return render(request, 'email.html', {'email': user.email})
+
+
