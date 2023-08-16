@@ -20,7 +20,7 @@
         </div>
         <br>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="title1">
                 <div class="titleText">{{ form.title.label_tag }} </div>
@@ -31,6 +31,8 @@
                 <div class="contentsText">{{ form.contents.label_tag }}</div>
                 <div class="contentsWriting">{{ form.contents }}</div>
             </div>
+
+            <input type="file" name="imgs" multiple>
             
             <input type="submit" value="등록"></input>
         </form>

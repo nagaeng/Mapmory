@@ -10,6 +10,7 @@ from django.core.serializers import deserialize
 import os
 from django.conf import settings
 from django.db.models import Q
+from django.utils import timezone
 
 
 
@@ -66,6 +67,7 @@ def create_post(request, username):
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
+            post.datetime = timezone.now()
             post.save()
             #form.save_m2m() #ManyToManyField에 저장
             for hashtag_name in selected_hashtags:
@@ -74,7 +76,7 @@ def create_post(request, username):
             return redirect('post:hashtag_posts', hashtag_name=selected_hashtags[0])
     else:
         form = PostForm()
-        #form = PostForm(selected_hashtags=selected_hashtags)
+        #form = PostForm(selected_hashtags=selected_hashtags)  
     return render(request, 'post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
 
 def end_view(request):
