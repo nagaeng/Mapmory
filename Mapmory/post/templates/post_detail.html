@@ -8,6 +8,9 @@
     <h1>제목: {{ post.title }}</h1>
     <h3>내용</h3>
     <p>{{ post.contents }}</p>
+    {% for photo in post.photo_set.all %}
+        <img src="{{ photo.image.url }}" width="200" height="200"><br>
+    {% endfor %}
     <p>선택한 해시태그들:</p>
     <ul>
         {% for hashtag in post.hashtag.all %}

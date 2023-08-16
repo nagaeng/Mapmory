@@ -1,40 +1,62 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>글 작성 페이지</title>
-        <!--배경색, 폰트-->
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <!--아이콘-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--글쓰기-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/_3_1writing.css' %}">
-    </head>
-    <body>
-        <div class="hashtag">
-            <ul>
+<head>
+    <title>글 작성 페이지</title>
+    <!--배경색, 폰트-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_3_1writing.css' %}">
+    <!-- Add slick-carousel stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+</head>
+<body>
+    <div class="hashtag">
+        <ul>
             {% for hashtag in selected_hashtags %}
                 <li>{{ hashtag }}</li>
             {% endfor %}
-            </ul>
+        </ul>
+    </div>
+    <br>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="title1">
+            <div class="titleText">{{ form.title.label_tag }} </div>
+            <div class="titleWriting">{{ form.title }}</div>
         </div>
-        <br>
+<!-- 이미지 업로드 관련 부분 -->
+        <div class="photoformset">
+            {{ photoformset.management_form }}
+            {% for photo_form in photoformset.forms %}
+                {{ photo_form.image.label_tag }}
+                {{ photo_form.image }}
+            {% endfor %}
+        </div>
 
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="title1">
-                <div class="titleText">{{ form.title.label_tag }} </div>
-                <div class="titleWriting">{{ form.title }}</div>
-            </div>
+        <div class="contents1">
+            <div class="contentsText">{{ form.contents.label_tag }}</div>
+            <div class="contentsWriting">{{ form.contents }}</div>
+        </div>
 
-            <div class="contents1">
-                <div class="contentsText">{{ form.contents.label_tag }}</div>
-                <div class="contentsWriting">{{ form.contents }}</div>
-            </div>
+        <input type="submit" value="등록"></input>
+    </form>
 
-            <input type="file" name="imgs" multiple>
-            
-            <input type="submit" value="등록"></input>
-        </form>
-    </body>
+    <!-- Add slick-carousel script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.slider ul').slick({
+                infinite: true,
+                slidesToShow: 2, // 한 번에 보여질 이미지 수
+                slidesToScroll: 1 // 스크롤 시 움직이는 이미지 수
+            });
+        });
+    </script>
+</body>
 </html>

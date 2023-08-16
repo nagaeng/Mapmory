@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -139,6 +142,3 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'mypage'  # 로그인 URL을 실제로 사용하는 이름으로 변경
 LOGOUT_URL = 'login_view'  # 로그아웃 URL을 실제로 사용하는 이름으로 변경
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
