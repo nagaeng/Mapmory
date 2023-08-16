@@ -14,6 +14,15 @@ from django.contrib.auth.models import AnonymousUser
 #환경설정 홈
 def config_home(request):
   return render(request, 'config_home.html')
+#보안
+def config_secuity(request):
+  return render(request, 'security.html')
+#다크모드
+def dark_mode(request):
+  return render(request, 'dark_mode.html')
+#알림설정
+def notification(request):
+  return render(request, 'notification.html')
 # 언어 변경
 def set_language(request):
     if request.method == 'POST':
@@ -50,3 +59,8 @@ def show_email(request):
     if isinstance(user, AnonymousUser):
       return render(request, 'email.html', {'email':None})
     return render(request, 'email.html', {'email': user.email})
+
+
+
+
+

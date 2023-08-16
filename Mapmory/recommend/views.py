@@ -11,3 +11,4 @@ def search(request):
         else:
             return render(request, 'no_search.html')
     return render(request, 'button.html')
+

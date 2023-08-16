@@ -23,9 +23,13 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+#사진 올리는 모델
 class Photo(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to = 'images/', blank=True, null=True)
+    
+    def __str__(self):
+        return str(self.image)
 
 #태그
 class Tag(models.Model):
