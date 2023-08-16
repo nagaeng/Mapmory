@@ -1,13 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <head>
+    <title>홈화면</title>
+    <!--배경색, 폰트-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기->해시태그선택-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_2home.css' %}">
 </head>
 <body>
-    <div>
-        <h1>홈 화면을 구현 중입니다</h1><br>
-        <h3>로그인 성공</h3><br>
-        <h3><a href={% url 'signup' %}>회원가입</a></h3>
-        <h3><a href={% url 'login_view' %}>로그인</a></h3>
-        <h3><a href={% url 'mypage:mypage' %}>마이페이지</a></h3> 
-        <h3><a href={% url 'post:post_form' %}>글쓰기</a></h3> 
+    <!--나의지도 텍스트-->
+    <div class="myMap">나의 지도</div>
+
+    <!--위치아이콘-->
+    <div class="IconLocationPin">
+        <span class="material-icons">
+            location_on
+        </span>
+    </div>
+
+
+    <!--네비바-->
+    <div class="naviBar" style="width: 332px; height: 59px; left: 20px; top: 689.50px; position: absolute">
+        <div class="naviBackground">
+
+            <a href={% url 'post:post_form' %}>
+                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 20px; position: absolute; font-size: 30px;">edit</span>
+            </a>
+
+            <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 90px; position: absolute; font-size: 30px;">location_on</span>
+
+            <a href={% url 'accounts:home' %} >
+                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 160px; position: absolute; font-size: 30px;">home</span>
+            </a>
+
+            <a href={% url 'mypage:mypage' %} >
+                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 230px; position: absolute; font-size: 30px;">person</span>
+            </a>
+
+            <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 300px; position: absolute; font-size: 30px;">settings</span>
+        </div>
     </div>
 </body>

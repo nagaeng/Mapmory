@@ -52,17 +52,6 @@
     left: 93px; top: 228.50px; position: absolute;
 }
 
-.title1 > .titleText{
-    width: 54px; height: 29px; 
-    left: 39px; top: 228.50px; position: absolute; 
-    text-align: center;
-    color: #A7A7A7; 
-    font-size: 20px; 
-    font-family: Gmarket Sans TTF; 
-    font-weight: 500; 
-    line-height: 20px; 
-    word-wrap: break-word;
-}
 
 .contents1 > .contentsText{
     width: 92px; height: 29px; 
