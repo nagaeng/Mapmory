@@ -29,3 +29,11 @@
      display: inline-flex
 }
 
+.naviBar > .material-icons{
+    color: rgba(84.26, 84.26, 84.26, 0.80);
+    font-size: 30px;
+    position: absolute;
+    width: 26px; height: 26px;
+    top: 19px;
+}
+
