@@ -14,6 +14,90 @@
     font-weight: 300;
 }
 
+.hashtag{
+    left: 41px; top: 111.50px; position: absolute;
+    width: 311px; height: 55px; 
+    background: rgba(210, 232, 154, 0.79); 
+    border-radius: 10px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
+
+.hashtag > ul {
+    list-style:none;
+}
+ 
+.hashtag > ul > li {
+    float: left;
+    margin-right: 10px;
+}
+
+/* .title1 > .titleText{
+
+} */
+
+.title1 > .titleText{
+    width: 54px; height: 29px; 
+    left: 39px; top: 228.50px; position: absolute; 
+    text-align: center;
+    color: #A7A7A7; 
+    font-size: 20px; 
+    font-family: Gmarket Sans TTF; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.title1 > .titleWriting{
+    left: 93px; top: 228.50px; position: absolute;
+}
+
+.title1 > .titleText{
+    width: 54px; height: 29px; 
+    left: 39px; top: 228.50px; position: absolute; 
+    text-align: center;
+    color: #A7A7A7; 
+    font-size: 20px; 
+    font-family: Gmarket Sans TTF; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.contents1 > .contentsText{
+    width: 92px; height: 29px; 
+    left: 23px; top: 290.50px; position: absolute; 
+    text-align: center; 
+    color: #A7A7A7; 
+    font-size: 15px; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.contents1 > .contentsWriting{
+    left: 95px; top: 290.50px; position: absolute;
+    
+}
+
+body > form > input{
+    left: 314px; top: 72px;
+    width: 62px; height: 26px; 
+    background-color: #FFFFEA; 
+    border-radius: 50px;
+    border-color:  #FFFFEA;
+    position: absolute; 
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06); 
+    justify-content: center; 
+    align-items: center; 
+    display: inline-flex;
+    text-decoration: none;
+    text-align: center; 
+    color: #545454; 
+    font-family: Gmarket Sans TTF;
+    font-size: 15px; 
+    font-weight: 300;
+}
 /*네비바*/
 .naviBar > .naviBackground{
     width: 322px; height: 40px; 
