@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Post, Hashtag
+from .models import Post, Hashtag, Tag
 from .forms import PostForm
 from accounts.models import CustomUser
 from django.contrib.auth.decorators import login_required
