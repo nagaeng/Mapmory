@@ -76,6 +76,13 @@
     border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
     overflow-y: auto;
 }
+.mywritingback::-webkit-scrollbar {
+    width: 1vw;
+}
+.mywritingback::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 42%, 0.29);
+    border-radius: 100px;
+}
 .myText{
     width: 139px; height: 27px; 
     position: absolute; 

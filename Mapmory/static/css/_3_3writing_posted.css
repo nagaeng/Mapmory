@@ -1,19 +1,32 @@
-.group1 > .hashtag1 > .b{
-    width: 65.53px; 
-    height: 119.85px;
-    position: absolute; 
-    background: rgba(255, 255, 234, 0.86); 
-    border-radius: 10px;
+
+ul {
+    left: -30px; top: -30px; position: absolute;
+    list-style:none;
+}
+ 
+li {
+    /* float: left; */
+    display:inline-block;
+    padding-right: 5px;
+}
+
+.box1::-webkit-scrollbar {
+    width: 1vw;
+}
+.box1::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 42%, 0.29);
+    border-radius: 100px;
 }
 
 .group1 > .hashtag1 > .box1{
+    overflow-x: auto; white-space: nowrap;
     width: 311px; 
-    height: 131px; 
+    height: 147px; 
     left: 0px; top: 0px; 
     position: absolute; 
     background: rgba(210, 232, 154, 0.79); 
     border-radius: 10px;
-     border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
 }
 
 .group1 > .hashtag1 > .hashtag1Text{
@@ -29,29 +42,7 @@
 }
 
 
-.group2 > .hashtag2 > .hashtag2Text{
-    left: 0px; top: 0px; 
-    position: absolute; 
-    text-align: center; 
-    color: black; 
-    font-size: 18px; 
-    font-weight: 300; 
-    line-height: 20px; 
-    word-wrap: break-word;
-}
 
-
-.group2 > .hashtag2 > .b{
-    width: 65.53px; 
-    height: 119.85px;
-    position: absolute; 
-    background: rgba(255, 255, 234, 0.86); 
-    border-radius: 10px;
-}
-
-.group2 > .hashtag2 > .box2{
-    width: 311px; height: 131px; left: 0px; top: 0px; position: absolute; background: rgba(210, 232, 154, 0.79); border-radius: 10px; border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
-}
 
 
 .icon > .donggrami{
