@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'post',
     'rest_framework',
     'accounts',
     'mypage',
     'config',
     'recommend',
+    'django.contrib.staticfiles',
 ]
 
 SESSION_ENGINE ='django.contrib.sessions.backends.db'
