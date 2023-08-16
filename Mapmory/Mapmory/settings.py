@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'post',
     'rest_framework',
     'accounts',
     'mypage',
+    'config',
+    'recommend',
+    'django.contrib.staticfiles',
 ]
 
 SESSION_ENGINE ='django.contrib.sessions.backends.db'
@@ -52,6 +54,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -115,7 +118,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko'
 
+TIME_ZONE = 'UTC'
+
 TIME_ZONE = 'Asia/Seoul'
+
 
 USE_I18N = True
 
@@ -142,3 +148,9 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'mypage'  # 로그인 URL을 실제로 사용하는 이름으로 변경
 LOGOUT_URL = 'login_view'  # 로그아웃 URL을 실제로 사용하는 이름으로 변경
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+
+LANGUAGE_SESSION_KEY = 'my_language'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
