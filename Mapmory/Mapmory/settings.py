@@ -1,9 +1,8 @@
 from pathlib import Path
 import os
 import environ
-import os
 import pymysql
-
+'''
 pymysql.install_as_MySQLdb()
 env = environ.Env(
     # set casting, default value
@@ -20,7 +19,8 @@ os.environ.get('AWS_BUCKET') # 기본 사용방법
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
-
+'''
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -92,6 +92,7 @@ WSGI_APPLICATION = 'Mapmory.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 #데베 디버그용/ 릴리즈용 구분
+'''
 if DEBUG is True:
     DATABASES = {
         "default" : {
@@ -100,9 +101,13 @@ if DEBUG is True:
             "USER":"admin",
             "PASSWORD":"sungshin_jjang10%",
             "HOST":"database-1.csjknswpgg8e.ap-northeast-2.rds.amazonaws.com",
-            "PORT":"3306"
+            "PORT":"3306",
+            'OPTIONS':{
+            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
+            },
         }
     }
+    
 else:
     DATABASES = {
         "default": {
@@ -114,17 +119,17 @@ else:
             "PORT":os.environ.get("DB_PORT"),
             'OPTIONS':{
             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
-            }
+            },
         }
         
-    }
+    }'''
     
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
     }
-}'''
+}
 
 
 # Password validation

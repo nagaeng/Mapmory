@@ -19,6 +19,7 @@ class Post(models.Model):
     writer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
     hashtag = models.ManyToManyField(Hashtag)
     datetime = models.DateTimeField(auto_now=True)
+    location = models.CharField(max_length=20, verbose_name='지역', null=True)
 
     def __str__(self):
         return self.title
