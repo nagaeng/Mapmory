@@ -1,5 +1,59 @@
-<!--검색창에 키워드 입력하면 search로 연결-->
-<form method='post' action={% url 'search' %}>
-    {% csrf_token %}
-    <input type="text" name="keyword" placeholder="검색할 지역을 입력하세요">
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>지역검색</title>
+        <!--배경색, 폰트-->
+        <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
+        <!--아이콘-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--글쓰기->해시태그선택-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/_4_1recommend.css' %}?v=2">
+    </head>
+    <body>
+        <!-- 토순이 이미지-->
+        <img class="Tosun" style="width: 136px; height: 160px; left: 54px; top: 190px; 
+                position: absolute" src = "{% static 'img/tosun_noBackground.png' %}" alt="토순이입니다."/>
+        <!-- 말풍선 -->
+        <img class="Tosun" style="width: 100px; height: 100px; left: 184px; top: 160px; 
+                position: absolute" src = "{% static 'img/malpungseon.png' %}" alt="말풍선"/>
+        <div class="malText" style="left: 214px; top: 200px; position: absolute; font-size: 20px;">안녕!</div>
+
+        <!--검색창-->
+        <div class="searchBack">
+            <!--검색창에 키워드 입력하면 search로 연결-->
+            <form method='post' action={% url 'recommend:search' %}>
+                {% csrf_token %}
+                <input type="text" name="keyword" placeholder="검색할 지역을 입력하세요">
+            </form>
+        </div>
+
+        <!--네비바-->
+        <div class="naviBackground">
+
+            <a href={% url 'post:post_form' %}>
+                <span class="material-icons" style="left: 20px;">edit</span>
+            </a>
+
+            <a href={% url 'recommend:search' %}>
+                <span class="material-icons" style="left: 90px;">search</span>
+            </a>
+            
+
+            <a href={% url 'accounts:home' %} >
+                <span class="material-icons" style="left: 160px;">home</span>
+            </a>
+
+            <a href={% url 'mypage:mypage' %} >
+                <span class="material-icons" style="left: 230px;">person</span>
+            </a>
+            <a href={% url 'settings:config_home' %}>
+                <span class="material-icons" style="left: 300px;">settings</span>
+            </a>
+            
+        </div>
+
+        
+    </body>
+</html>
+

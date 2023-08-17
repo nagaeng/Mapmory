@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'settings'
+
 urlpatterns = [
     path('config_home/',views.config_home, name="config_home"),
     path('config_security/',views.config_secuity, name="config_security"),

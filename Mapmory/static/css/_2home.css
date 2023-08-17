@@ -11,7 +11,7 @@
     width: 40.10px; height: 36.81px; 
     left: 44px; top: 83px; position: absolute; 
     font-size: 30px;
-    color: #D2E89A
+    color: #D2E89A;
 }
 
 
@@ -26,8 +26,8 @@
     flex-direction: column; 
     justify-content: flex-start; 
     align-items: flex-start;
-     gap: 10px; 
-     display: inline-flex
+    gap: 10px; 
+    display: inline-flex;
 }
 
 .naviBackground > a > .material-icons{
