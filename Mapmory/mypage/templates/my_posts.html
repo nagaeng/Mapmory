@@ -1,9 +1,23 @@
-<ul>
-    {% for post in user_posts %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>my_posts</title>
+</head>
+<body>
+    <h1>내 글 보기</h1>
+    <ul>
+        {% for post in user_posts %}
         <li>
-            <h2>{{ post.title }}</h2>
+            {% if post.writer %}
+            <a href="{% url 'mypage:edit_post' post.id %}">
+            <h3>{{ post.title }}<h3>
             <p>{{ post.contents }}</p>
-            <!-- <a href="{% url 'mypage:edit_post' post.id %}">수정</a> -->
+        </a>
+        {% else %}
+            글 수정: {{ post.title }}
+        {% endif %}
         </li>
     {% endfor %}
-</ul>
+    </ul>
+</body>
+</html>

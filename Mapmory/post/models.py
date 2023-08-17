@@ -27,6 +27,7 @@ class Post(models.Model):
     tagging = models.ManyToManyField(Tag, through='PostTag', related_name='tagged_posts')
 
     def __str__(self):
+
         return self.title
 class PostTag(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -42,5 +43,4 @@ class Photo(models.Model):
     
     def __str__(self):
         return str(self.image)
-
 

@@ -10,12 +10,8 @@ import json
 from django.core.serializers import deserialize
 import os
 from django.conf import settings
-
 from django.db.models import Q
 from django.utils import timezone
-
-
-
 
 def post_form_view(request):
     fixture_file = os.path.join(settings.BASE_DIR, 'post','fixtures','hashtags.json')
@@ -55,7 +51,7 @@ def get_hashtag_json(request):
         {"name": "#Good_for_dating"},
         {"name": "#Funny"}
     ]
-    return JsonResponse(hashtag, safe=False) 
+    return JsonResponse(hashtag, safe=False)
 
 @login_required
 def create_post(request, username):
@@ -106,8 +102,4 @@ def hashtag_posts(request, hashtag_name):
 def post_detail(request, username):
     post = get_object_or_404(Post, pk=username)
     return render(request, 'post_detail.html', {'post': post})
-
-
-
-
 
