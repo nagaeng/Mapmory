@@ -4,7 +4,7 @@ from .models import UserProfile
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from post.views import post_form_view
-from post.models import Post
+from post.models import Post, Photo
 from post.forms import PostForm
 from django.http import HttpResponseForbidden, Http404
 from django.core.serializers import deserialize
@@ -63,6 +63,8 @@ def edit_post(request, post_id):
     
     if post.writer != request.user:
         return HttpResponseForbidden("해당 글 작성자가 아닙니다.")
+    
+    photos = Photo.objects.filter(post=post)
     
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)

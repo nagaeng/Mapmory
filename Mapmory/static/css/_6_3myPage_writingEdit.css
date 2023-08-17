@@ -43,9 +43,25 @@
 }
 
 
-.contentsText{
+/* .contentsText{
     width: 92px; height: 29px; 
-    left: 3x; top: 69px; position: absolute; 
+    left: 10px; top: 50px; position: absolute;
+    text-align: center; 
+    color: #A7A7A7; 
+    font-size: 15px; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+} */
+
+.contentsWriting{
+    left: 14px; top: 59px; position: absolute;
+    
+}
+
+.locationText{
+    width: 52px; height: 29px; 
+    left: 5px; top: 350px; position: absolute;
     text-align: center; 
     color: #A7A7A7; 
     font-size: 15px; 
@@ -54,9 +70,8 @@
     word-wrap: break-word;
 }
 
-.contentsWriting{
-    left: 14px; top: 89px; position: absolute;
-    
+.locationWriting{
+    left: 54px; top: 350px; position: absolute;
 }
 
 /* 네모난 상자 */

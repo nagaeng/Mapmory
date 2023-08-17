@@ -30,10 +30,19 @@
                 </div>
         
                 <div class="contents1">
-                    <div class="contentsText">{{ form.contents.label_tag }}</div>
+                    <!-- <div class="contentsText">{{ form.contents.label_tag }}</div> -->
                     <div class="contentsWriting">{{ form.contents }}</div>
                 </div>
+
+                <div class="location1">
+                    <div class="locationText">{{ form.location.label_tag }}</div>
+                    <div class="locationWriting">{{ form.location }}</div>
+                </div>
             </div>
+
+            {% for photo in photos %}
+                <img src="{{ photos.image.url }}" alt="Post Photo" width="200">
+            {% endfor %}
 
             <button type="submit">수정하기</button>
         </form>
