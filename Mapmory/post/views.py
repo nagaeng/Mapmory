@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Post, Hashtag
-from .forms import PostForm
+from .models import Post, Hashtag, Photo, Tag
+from .forms import PostForm, PhotoForm
+from django.forms import inlineformset_factory
 from accounts.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -9,6 +10,8 @@ import json
 from django.core.serializers import deserialize
 import os
 from django.conf import settings
+from django.db.models import Q
+from django.utils import timezone
 
 def post_form_view(request):
     fixture_file = os.path.join(settings.BASE_DIR, 'post','fixtures','hashtags.json')
@@ -52,27 +55,51 @@ def get_hashtag_json(request):
 
 @login_required
 def create_post(request, username):
-    #print(custom_id)
     user = get_object_or_404(CustomUser, pk=username)
-    #custom_id = custom_id
-
     selected_hashtags = request.session.get('selected_hashtags',[])
+    PhotoFormSet = inlineformset_factory(Post, Photo, form=PhotoForm, extra=1, can_delete=True)
+
     if request.method == 'POST':
         form = PostForm(request.POST)
-        #form = PostForm(request.POST, selected_hashtags=selected_hashtags)
+        photo_formset = PhotoFormSet(request.POST, request.FILES, prefix='image')
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
+            post.datetime = timezone.now()            
             post.save()
-            #form.save_m2m() #ManyToManyField에 저장
+            content = request.POST.get('contents') # 본문을 content에 저장
+            c_list = content.split('') # 공백으로 분리
+
+            for c in c_list:
+                if c.startswith('#'): # 만약 #이 붙어있으면 tag 객체를 이용하여 저장한다
+                    tag_name = c[1:]
+                    tag, created = Tag.objects.get_or_create(tag_content=tag_name)
+                    post.tagging.add(tag) 
+  
             for hashtag_name in selected_hashtags:
                 hashtag, created = Hashtag.objects.get_or_create(name=hashtag_name)
                 post.hashtag.add(hashtag)
-            return redirect('post:end')
+            for photo_form in photo_formset:
+                photo = photo_form.save(commit=False)
+                photo.post = post
+                photo.save()
+
+            return redirect('post:hashtag_posts', hashtag_name=selected_hashtags[0])
     else:
         form = PostForm()
-        #form = PostForm(selected_hashtags=selected_hashtags)
-    return render(request, 'post.html', {'username':username,'form':form, 'selected_hashtags':selected_hashtags})
+        photo_formset = PhotoFormSet(prefix='image')
+
+    return render(request, 'post.html', {'username':username,'form':form,'photoformset':photo_formset, 'selected_hashtags':selected_hashtags})
 
 def end_view(request):
     return render(request, 'end.html')
+
+def hashtag_posts(request, hashtag_name):
+    posts = Post.objects.filter(hashtag__name=hashtag_name)
+    return render(request, 'hashtag_posts.html', {'hashtag_name': hashtag_name, 'posts': posts})
+
+
+def post_detail(request, username):
+    post = get_object_or_404(Post, pk=username)
+    return render(request, 'post_detail.html', {'post': post})
+

@@ -61,8 +61,8 @@ function generateCheckboxes(group, container) {
 
     group.forEach((hashtag, index) => {
         const name = hashtag.fields.name;
-        checkboxesHTML += `<input id="check1" type="checkbox" name="hashtags" value="${name}">
-                        <label for="check1">${name} </label>`;
+        checkboxesHTML += `<input type="checkbox" name="hashtags" value="${name}">
+                        <label>${name} </label>`;
 
         // 해시태그 체크박스 2개마다 행 바꾸기
         if ((index + 1) % 2 === 0 || (group.length % 2 !== 0 && index === group.length - 1)) {

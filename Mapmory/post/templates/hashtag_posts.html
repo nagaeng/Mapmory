@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게시완료</title>
+    <!--배경색, 폰트-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_3_3writing_posted.css' %}?v=2">
+</head>
+<body>
+    <!--텍스트-->
+    <div class="text">*다음은 해시태그를 기반으로 회원님께 추천되는 게시물입니다.</div>
+    
+    <!--아이콘-->
+    <div class="icon" style="width: 234.25px; height: 231.33px; left: 79px; top: 37px; position: absolute">
+        <div class="donggrami"></div>
+        <div style="left: 65px; top: 153px; position: absolute; text-align: center; color: #545454; font-size: 24px; font-family: Gmarket Sans TTF; font-weight: 700; line-height: 20px; word-wrap: break-word">게시 완료!</div>
+        <span class="material-icons">done</span>
+    </div>
+
+    <!--해시태그1-->
+    <div class="group1" style="height: 155px; left: 39px; top: 321px; position: absolute">
+        <div class="hashtag1Text">{{ hashtag_name }}</div>
+        <div class="hashtag1" style="width: 311px; height: 131px; left: 1px; top: 24px; position: absolute">
+            <div class="box1">
+                <ul>
+                    {% for post in posts %}
+                        <li>
+                            <!-- <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a> -->
+                            <br>
+                            {% for photo in post.photo_set.all %}
+                            {% if photo.image %}
+                                <img src="{{ photo.image.url }}" alt="Post Image" width="65.53" height="119.85" style="border-radius: 10%;">
+                            {% endif %}
+                            {% endfor %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <!--네비바-->
+    <div class="naviBackground">
+
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
+        </a>
+
+        <span class="material-icons" style="left: 90px;">location_on</span>
+
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
+
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
+
+        <span class="material-icons" style="left: 300px;">settings</span>
+    </div>
+
+    
+</body>
+</html>

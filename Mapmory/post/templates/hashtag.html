@@ -4,17 +4,18 @@
     <head>
         <title>Hashtag Selection</title>
         <!--배경색, 폰트-->
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
         <!--아이콘-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--글쓰기->해시태그선택-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/_3_2wirting_hashtag.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/_3_2wirting_hashtag.css' %}?v=2">
     
         <script>
             var username = "{{ request.user.id }}";
         </script>
     </head>
     <body>
+
 
         <!--등록-->
         <div class="btn" >
@@ -25,19 +26,27 @@
             </form>
         </div>
 
-        <!--네비바-->
-        <div class="naviBar" style="width: 332px; height: 59px; left: 20px; top: 689.50px; position: absolute">
-            <div class="naviBackground"></div>
-            <span class="material-icons" style="left: 20px;" onclick="location.href='../html/_3_1writing.html';">edit</span>
-            <span class="material-icons" style="left: 90px;" onclick="location.href='../html/_4_1recommend.html';">location_on</span>
-            <span class="material-icons" style="left: 160px;" onclick="location.href='../html/_2home.html';">home</span>
-            <span class="material-icons" style="left: 230px;" onclick="location.href='../html/_6_1myPage.html';">person</span>
-            <span class="material-icons" style="left: 300px;" onclick="location.href='../html/_5settings.html';">settings</span>
-        </div>
-
-
-
         <script type="text/javascript" src="../../static/js/_3_2writing_hashtag.js"></script>
+
+        <!--네비바-->
+        <div class="naviBackground">
+
+            <a href={% url 'post:post_form' %}>
+                <span class="material-icons" style="left: 20px;">edit</span>
+            </a>
+
+            <span class="material-icons" style="left: 90px;">location_on</span>
+
+            <a href={% url 'accounts:home' %} >
+                <span class="material-icons" style="left: 160px;">home</span>
+            </a>
+
+            <a href={% url 'mypage:mypage' %} >
+                <span class="material-icons" style="left: 230px;">person</span>
+            </a>
+
+            <span class="material-icons" style="left: 300px;">settings</span>
+        </div>
     </body>
 </html>
 

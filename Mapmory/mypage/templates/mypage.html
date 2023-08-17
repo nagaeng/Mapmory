@@ -1,38 +1,93 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>mypage</title>
+    <title>마이페이지</title>
+    <!--배경색, 폰트-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_6_1myPage.css' %}">
 </head>
 <body>
-    <h1>환영합니다, {{ user_profile.user.username }}님!</h1>
-    <p>
-        {% if user_profile.profile_picture %}
-            <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진">
-        {% else %}
-            이미지 없음
-        {% endif %}
-    </p>
-    <p>닉네임: {{ user_profile.nickname }}</p>
-    <p>나이: {{ user_profile.age }}</p>
-    <p>여행 스타일: {{ user_profile.travel_style }}</p>
+    <!-- <h1>환영합니다, {{ user_profile.user.username }}님!</h1> -->
 
-    {% csrf_token %}
-    <a href="{% url 'mypage:edit_profile' %}">내 정보 수정하기</a>
+    <!--마이페이지제목-->
+    <div class="mypagetext" style="width: 204px; height: 34px; left: 97px; top: 73px; position: absolute">
+        <div class="mypagetextback">
+            <div class="back"></div>
+        </div>
+        <div class="text">마이페이지</div>
+    </div>
 
-    <h2>내가 작성한 글</h2>
-    <ul>
-        {% for post in user_posts %}
-        <li>
-            {% if post.writer %}
-            <a href="{% url 'mypage:edit_post' post.id %}">
-            <h3>{{ post.title }}<h3>
-            <p>{{ post.contents }}</p>
+    <!--내정보-->
+    <div class="myinfo" style="width: 334px; height: 242px; left: 30px; top: 126px; position: absolute">
+        <div class="profileback">
+            <p>
+                {% if user_profile.profile_picture %}
+                <div class="profileImage">
+                    <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진" style="border-radius: 100%; width: 100px; height: 100px;">
+                </div>
+                    
+                {% else %}
+                    이미지 없음
+                {% endif %}
+            </p>
+            <p style="padding-left: 10px;">닉네임: {{ user_profile.nickname }}</p>
+            <p style="padding-left: 10px;">나이: {{ user_profile.age }}</p>
+            <p style="padding-left: 10px;">여행 스타일: {{ user_profile.travel_style }}</p>
+            {% csrf_token %}
+            <div class="mypageeditbtn">
+                <a href="{% url 'mypage:edit_profile' %}">내 정보 수정하기</a>
+            </div>
+
+        </div>
+        
+  </div>
+    
+    
+    <div class="mywriting" style="width: 334px; height: 240px; left: 30px; top: 387px; position: absolute">
+        <div class="mywritingback">
+            <div class="myText"><내가 작성한 글></div>
+            <br>
+            <ul>
+                {% for post in user_posts %}
+                <li>
+                    {% if post.writer %}
+                    <a href="{% url 'mypage:edit_post' post.id %}" style="text-decoration: none;">
+                        <h3 style="color: #1f1f1f; font-size: 16px;">{{ post.title }}<h3>
+                        <p style="color: #545454; font-size: 12px;">{{ post.contents }}</p>
+                    </a>
+                {% else %}
+                    글 수정: {{ post.title }}
+                {% endif %}
+                </li>
+                {% endfor %}
+        
+            </ul>
+        </div>
+        
+    </div>
+
+    <!--네비바-->
+    <div class="naviBackground">
+
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
         </a>
-        {% else %}
-            글 수정: {{ post.title }}
-        {% endif %}
-        </li>
-    {% endfor %}
-    </ul>
+
+        <span class="material-icons" style="left: 90px;">location_on</span>
+
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
+
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
+        <span class="material-icons" style="left: 300px;">settings</span>
+    </div>
+    
 </body>
 </html>

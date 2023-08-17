@@ -4,15 +4,15 @@
     <head>
         <meta charset="utf-8">
         <!--배경색, 폰트-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}?v=2">
         <!--로그인-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/_1login.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/_1login.css' %}?v=2">
 
         
         
     </head>
     <body>
-        <form method="POST" action="{% url 'login_view' %}">
+        <form method="POST" action="{% url 'accounts:login_view' %}">
             {% csrf_token %}
             <!--아이디입력-->
             <input type="text" id="username" name="username" required class="loginInfo" style="left: 54px; top: 458px; position: absolute" placeholder="아이디">
@@ -34,7 +34,7 @@
 
             <!--회원가입버튼-->
             <div class = "membershipBtn">
-                <a a href={% url 'signup' %}>
+                <a a href={% url 'accounts:signup' %}>
                     회원가입
                 </a>
             </div>

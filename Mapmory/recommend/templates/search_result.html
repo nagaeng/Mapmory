@@ -1,16 +1,24 @@
-{% block content %}
-<form>
-  {% csrf_token %}
-  <input type="text" name="keyword">
-</form>
-
-<div class="content">
-  <div id="title">{{ keyword }}추천 장소</div>
-
-  <div class="image_box">
-      {% for p in post %}
-          <div id="image_box">{{ p.title }}</div>
-      {% endfor %}
-  </div>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ hashtag_name }} 추천 장소</title>
+    <form method='post' action={% url 'search' %}>
+        {% csrf_token %}
+        <input type="text" name="keyword">
+    </form>
+</head>
+<body>
+    <h1>{{ hashtag_name }} 추천 장소</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
+                <br>
+                {% for photo in post.photo_set.all %}
+                    <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

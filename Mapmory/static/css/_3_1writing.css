@@ -13,12 +13,98 @@
     font-size: 15px; 
     font-weight: 300;
 }
+/* 해시태그나열 */
+.hashtag{
+    left: 41px; top: 111.50px; position: absolute;
+    width: 311px; height: 55px; 
+    background: rgba(210, 232, 154, 0.79); 
+    border-radius: 10px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
 
+
+.hashtag > ul {
+    list-style:none;
+}
+ 
+.hashtag > ul > li {
+    float: left;
+    margin-right: 10px;
+}
+
+/* 제목 */
+.titleText{
+    width: 54px; height: 29px; 
+    left: 20px; top: 20px; position: absolute; 
+    text-align: center;
+    color: #A7A7A7; 
+    font-size: 20px; 
+    font-family: Gmarket Sans TTF; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.titleWriting{
+    left: 73px; top: 18px; position: absolute;
+}
+
+/* 글쓰기 */
+/* .contentsText{
+    width: 92px; height: 29px; 
+    left: 5px; top: 46px; position: absolute; 
+    text-align: center; 
+    color: #A7A7A7; 
+    font-size: 15px; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+} */
+
+.contentsWriting{
+    left: 23px; top: 50px; position: absolute;
+    
+}
+
+/* 이미지 */
+.photoformset{
+    left: 15px; top: 400px; position: absolute;
+    width: 411px; height: 30px;
+}
+
+/* 네모난 상자 */
+.background{
+    width: 334px; height: 437px; 
+    left: 30px; top: 189px;
+    position: absolute; 
+    background: rgba(255, 240, 239, 0.79); 
+    box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.10); 
+    border-radius: 10px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
+body > form > input{
+    left: 314px; top: 72px;
+    width: 62px; height: 26px; 
+    background-color: #FFFFEA; 
+    border-radius: 50px;
+    border-color:  #FFFFEA;
+    position: absolute; 
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06); 
+    justify-content: center; 
+    align-items: center; 
+    display: inline-flex;
+    text-decoration: none;
+    text-align: center; 
+    color: #545454; 
+    font-family: Gmarket Sans TTF;
+    font-size: 15px; 
+    font-weight: 300;
+}
 /*네비바*/
-.naviBar > .naviBackground{
-    width: 322px; height: 40px; 
-    padding-left: 14px; padding-right: 14px; padding-top: 12px; padding-bottom: 12px; 
-    left: 0px; top: 0px; position: absolute; 
+.naviBackground{
+    width: 342px; height: 59px; 
+    left: 20px; top: 689.50px; position: absolute;
     background: rgba(250, 223, 222, 0.69); 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); 
     border-radius: 100px; 
@@ -30,10 +116,8 @@
      display: inline-flex
 }
 
-.naviBar > .material-icons{
-    color: rgba(84.26, 84.26, 84.26, 0.80);
-    font-size: 30px;
-    position: absolute;
-    width: 26px; height: 26px;
-    top: 19px;
+.naviBackground > a > .material-icons{
+    color: rgba(84.26, 84.26, 84.26, 0.80); 
+    width: 26px; height: 26px; top: 19px; 
+    position: absolute; font-size: 30px;
 }

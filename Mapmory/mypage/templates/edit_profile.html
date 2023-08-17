@@ -1,56 +1,92 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>edit_profile</title>
+    <title>마이페이지 내 정보 수정하기</title>
+    <!--배경색, 폰트-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_6_2myPage_edit.css' %}">
+
 </head>
 <body>
-    <h1>내 정보 수정하기</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="{{ form.profile_picture.id_for_label }}">프로필 사진</label><br>
-        {% if form.instance.profile_picture %}
-            <img src="{{ form.instance.profile_picture.url }}" alt="프로필 사진">
-        {% endif %}<br>
-        {{ form.profile_picture }}
-        {% if form.profile_picture.errors %}
-            <ul class="errorlist">
-                {% for error in form.profile_picture.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <br><br>
-        <label for="{{ form.nickname.id_for_label }}">닉네임: </label>
-        {{ form.nickname }}
-        {% if form.nickname.errors %}
-            <ul class="errorlist">
-                {% for error in form.nickname.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <br><br>
-        <label for="{{ form.age.id_for_label }}">나이: </label>
-        {{ form.age }}
-        {% if form.age.errors %}
-            <ul class="errorlist">
-                {% for error in form.age.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <br><br>
-        <label for="{{ form.travel_style.id_for_label }}">여행 스타일: </label>
-        {{ form.travel_style }}
-        {% if form.travel_style.errors %}
-            <ul class="errorlist">
-                {% for error in form.travel_style.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <br><br>
-        <button type="submit">저장</button>
+    <!--내정보수정하기제목-->
+    <div class="myinfoedit" style="width: 204px; height: 34px; left: 97px; top: 73px; position: absolute">
+        <div class="back"></div>
+        <div class="text">내 정보 수정하기</div>
+      </div>
+
+
+        
+        <form method="post" enctype="multipart/form-data">
+            <div class="nemoBack">
+            {% csrf_token %}
+            <!--프로필사진-->
+            {% if form.instance.profile_picture %}
+                <img height="100" width="100" src="{{ form.instance.profile_picture.url }}" alt="프로필 사진">
+            {% endif %}<br>
+            {{ form.profile_picture }}
+            {% if form.profile_picture.errors %}
+                <ul class="errorlist">
+                    {% for error in form.profile_picture.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <br><br>
+
+            <!-- 닉네임 -->
+            <div class="nickname">
+                <label for="{{ form.nickname.id_for_label }}">닉네임: </label>
+                {{ form.nickname }}
+                {% if form.nickname.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.nickname.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <br><br>
+
+            <!-- 나이 -->
+            <div class="age">
+                <label for="{{ form.age.id_for_label }}">나이: </label>
+                {{ form.age }}
+                {% if form.age.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.age.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <br><br>
+            <!-- 여행스타일 -->
+            <div class="travelSt">
+                <label for="{{ form.travel_style.id_for_label }}">여행 스타일: </label>
+                {{ form.travel_style }}
+                {% if form.travel_style.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.travel_style.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <br><br>
+          
+        </div>
+        <!-- 수정하기 버튼 -->
+        <button type="submit">수정하기</button>
     </form>
+    
+
+    
 </body>
 </html>
