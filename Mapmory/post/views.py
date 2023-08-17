@@ -68,7 +68,7 @@ def create_post(request, username):
             post.datetime = timezone.now()            
             post.save()
             content = request.POST.get('contents') # 본문을 content에 저장
-            c_list = content.split('') # 공백으로 분리
+            c_list = content.split(' ') # 공백으로 분리
 
             for c in c_list:
                 if c.startswith('#'): # 만약 #이 붙어있으면 tag 객체를 이용하여 저장한다
