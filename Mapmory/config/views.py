@@ -24,14 +24,19 @@ def dark_mode(request):
 def notification(request):
   return render(request, 'notification.html')
 # 언어 변경
+def ko_en(request):
+  return render(request, 'lang_url.html')
+
 def set_language(request):
     if request.method == 'POST':
         language = request.POST.get('language', '')
         if language in [lang_code for lang_code, _ in settings.LANGUAGES]:
             translation.activate(language)
             request.session[translation.LANGUAGE_SESSION_KEY] = language
-            return HttpResponse(f'Language set to: {language}')
+            return render(request, 'set_lang.html')
     return render(request, 'set_lang.html')
+  
+  
 # 비밀번호 변경
 def change_password(request):
   if request.method == "POST":
@@ -45,7 +50,7 @@ def change_password(request):
         user.save()
         messages.success(request, 'Password has been changed successfully.')
         auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return redirect('config_home') # 비밀번호 변경 완료 후 넘어갈 페이지 url
+        return redirect('config_security') # 비밀번호 변경 완료 후 넘어갈 페이지 url
       else:
         messages.error(request, 'Password not same')
     else:
