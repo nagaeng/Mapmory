@@ -47,6 +47,7 @@
 
 .titleWriting{
     left: 73px; top: 18px; position: absolute;
+    background-color: rgba(255, 240, 239, 0.79);
 }
 
 /* 글쓰기 */

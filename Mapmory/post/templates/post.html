@@ -29,6 +29,7 @@
             <div class="title1">
                 <div class="titleText">{{ form.title.label_tag }} </div>
                 <div class="titleWriting">{{ form.title }}</div>
+                
             </div>
             <div class="location">
                 <div class="locationTag">{{ form.location.label_tag }}</div>
@@ -74,7 +75,10 @@
             <span class="material-icons" style="left: 20px;">edit</span>
         </a>
 
-        <span class="material-icons" style="left: 90px;">location_on</span>
+        <a href={% url 'recommend:search' %}>
+            <span class="material-icons" style="left: 90px;">search</span>
+        </a>
+        
 
         <a href={% url 'accounts:home' %} >
             <span class="material-icons" style="left: 160px;">home</span>
@@ -83,8 +87,10 @@
         <a href={% url 'mypage:mypage' %} >
             <span class="material-icons" style="left: 230px;">person</span>
         </a>
-
-        <span class="material-icons" style="left: 300px;">settings</span>
+        <a href={% url 'settings:config_home' %}>
+            <span class="material-icons" style="left: 300px;">settings</span>
+        </a>
+        
     </div>
 </body>
 </html>

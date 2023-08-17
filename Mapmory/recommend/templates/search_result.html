@@ -1,24 +1,66 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ hashtag_name }} 추천 장소</title>
-    <form method='post' action={% url 'search' %}>
-        {% csrf_token %}
-        <input type="text" name="keyword">
-    </form>
+    <title>추천 장소</title>
+    <!--배경색, 폰트-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기->해시태그선택-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_4_3recommend_result.css' %}?v=2">
+    
 </head>
 <body>
-    <h1>{{ hashtag_name }} 추천 장소</h1>
-    <ul>
+    
+
+    <form method='post' action={% url 'recommend:search' %}>
+        {% csrf_token %}
+        <input type="text" name="keyword" placeholder="검색할 지역을 입력하세요">
+    </form>
+
+
+    <div class="placeText">
+        #{{ hashtag_name }} 추천 장소
+    </div>
+    
+    <ul class="ul">
         {% for post in posts %}
             <li>
-                <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
-                <br>
-                {% for photo in post.photo_set.all %}
-                    <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
-                {% endfor %}
+                <div class="background">
+                    <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
+                    {% for photo in post.photo_set.all %}
+                        <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
+                    {% endfor %}
+                </div>
+                
             </li>
         {% endfor %}
     </ul>
+
+    <!--네비바-->
+    <div class="naviBackground">
+
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
+        </a>
+
+        <a href={% url 'recommend:search' %}>
+            <span class="material-icons" style="left: 90px;">search</span>
+        </a>
+        
+
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
+
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
+        <a href={% url 'settings:config_home' %}>
+            <span class="material-icons" style="left: 300px;">settings</span>
+        </a>
+        
+    </div>
 </body>
 </html>

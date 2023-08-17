@@ -1,5 +1,5 @@
-.searchBack > form > input{
-    left: 39px; top: 373px; 
+form > input{
+    left: 39px; top: 73px; 
     position: absolute; 
     color: black; 
     font-size: 15px;
@@ -13,6 +13,10 @@
     width: 309px; height: 33px; 
 }
 
+.no{
+    left: 126px; top: 143px; position: absolute;
+    color: #545454;
+}
 
 
 
