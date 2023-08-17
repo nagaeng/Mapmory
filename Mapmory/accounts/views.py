@@ -20,7 +20,7 @@ def signup(request):
                 email=email,
             )
             login(request, user=user)
-            return redirect('login_view') # 회원가입 성공 시 이동할 URL 연결할 곳
+            return redirect('accounts:login_view') # 회원가입 성공 시 이동할 URL 연결할 곳
         return render(request, 'signup.html')
     return render(request, 'signup.html')
 
@@ -32,7 +32,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user=user)
-            return redirect('home') # 로그인 성공 시 이동할 URL 연결할 곳
+            return redirect('accounts:home') # 로그인 성공 시 이동할 URL 연결할 곳
         else:
             return render(request, 'login.html', {'error' : 'username or password is incorrect.'})
     else:
@@ -41,7 +41,7 @@ def login_view(request):
 #로그아웃
 def logout(request):
     logout(request)
-    return redirect('login_view')
+    return redirect('accounts:login_view')
 
 def home(request):
     return render(request, 'home.html')

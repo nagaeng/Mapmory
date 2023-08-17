@@ -4,11 +4,11 @@
 <head>
     <title>글 작성 페이지</title>
     <!--배경색, 폰트-->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
     <!--아이콘-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--글쓰기-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/_3_1writing.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_3_1writing.css' %}?v=2">
     <!-- Add slick-carousel stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -25,23 +25,26 @@
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="title1">
-            <div class="titleText">{{ form.title.label_tag }} </div>
-            <div class="titleWriting">{{ form.title }}</div>
+        <div class="background">
+            <div class="title1">
+                <div class="titleText">{{ form.title.label_tag }} </div>
+                <div class="titleWriting">{{ form.title }}</div>
+            </div>
+            <!-- 이미지 업로드 관련 부분 -->
+            <div class="photoformset">
+                {{ photoformset.management_form }}
+                {% for photo_form in photoformset.forms %}
+                    {{ photo_form.image.label_tag }}
+                    {{ photo_form.image }}
+                {% endfor %}
+            </div>
+    
+            <div class="contents1">
+                <!-- <div class="contentsText">{{ form.contents.label_tag }}</div> -->
+                <div class="contentsWriting">{{ form.contents }}</div>
+            </div>
         </div>
-<!-- 이미지 업로드 관련 부분 -->
-        <div class="photoformset">
-            {{ photoformset.management_form }}
-            {% for photo_form in photoformset.forms %}
-                {{ photo_form.image.label_tag }}
-                {{ photo_form.image }}
-            {% endfor %}
-        </div>
-
-        <div class="contents1">
-            <div class="contentsText">{{ form.contents.label_tag }}</div>
-            <div class="contentsWriting">{{ form.contents }}</div>
-        </div>
+        
 
         <input type="submit" value="등록"></input>
     </form>
@@ -58,5 +61,26 @@
             });
         });
     </script>
+
+
+    <!--네비바-->
+    <div class="naviBackground">
+
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
+        </a>
+
+        <span class="material-icons" style="left: 90px;">location_on</span>
+
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
+
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
+
+        <span class="material-icons" style="left: 300px;">settings</span>
+    </div>
 </body>
 </html>

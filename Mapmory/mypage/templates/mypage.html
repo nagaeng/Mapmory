@@ -27,7 +27,7 @@
             <p>
                 {% if user_profile.profile_picture %}
                 <div class="profileImage">
-                    <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진" style="border-radius: 100%;">
+                    <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진" style="border-radius: 100%; width: 100px; height: 100px;">
                 </div>
                     
                 {% else %}
@@ -71,6 +71,26 @@
             </ul>
         </div>
         
+    </div>
+
+    <!--네비바-->
+    <div class="naviBackground">
+
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
+        </a>
+
+        <span class="material-icons" style="left: 90px;">location_on</span>
+
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
+
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
+
+        <span class="material-icons" style="left: 300px;">settings</span>
     </div>
     
 </body>
