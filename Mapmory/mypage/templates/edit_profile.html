@@ -80,19 +80,7 @@
             </div>
             
             <br><br>
-            <!-- 자주 사용하는 해시태그 -->
-            <div class="usuallyUsedHT">
-                <label for="hashtags">자주 사용하는 해시태그: </label>
-                <select name="hashtags" multiple size="3">
-                    {% for tag in hashtag_list %}
-                        <option value="{{ tag.name }}">{{ tag.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            
-
-            <br><br>
-            
+          
         </div>
         <!-- 수정하기 버튼 -->
         <button type="submit">수정하기</button>
