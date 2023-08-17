@@ -62,7 +62,7 @@
 } */
 
 .contentsWriting{
-    left: 23px; top: 50px; position: absolute;
+    left: 10px; top: 50px; position: absolute;
     
 }
 
@@ -70,6 +70,18 @@
 .photoformset{
     left: 15px; top: 400px; position: absolute;
     width: 411px; height: 30px;
+}
+
+/* 지역입력 */
+
+.locationTag{
+    
+    left: 15px; top: 350px; position: absolute;
+    width: 40px; height: 30px;
+}
+
+.locationText{
+    left: 55px; top: 347px; position: absolute;
 }
 
 /* 네모난 상자 */
