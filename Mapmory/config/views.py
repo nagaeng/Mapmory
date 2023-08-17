@@ -78,16 +78,8 @@ def dark_mode(request):
         'DARK_MODE': dark_mode_enabled,
     }
   return render(request, 'dark_mode.html', context)
-def toggle_dark_mode(request):
-    # Toggle the dark mode setting in the session
-    current_dark_mode = request.session.get('dark_mode', False)
-    request.session['dark_mode'] = not current_dark_mode
-    request.session.modified = True
-    return JsonResponse({'success': True})
 
-#알림설정
-def notification(request):
-  return render(request, 'notification.html')
+
 
 def ko_en(request):
    return render(request, 'lang_url.html')
