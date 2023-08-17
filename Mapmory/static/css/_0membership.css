@@ -1,3 +1,30 @@
+/*회원가입제목*/
+.membershiptextback{
+    width: 204px; height: 34px; 
+    left: 0px; top: 0px; 
+    position: absolute; 
+    box-shadow: -4px 9px 25px -6px rgba(0, 0, 0, 0.10); 
+    justify-content: center; 
+    align-items: center; 
+    display: inline-flex;
+    width: 204px; height: 34px; 
+    background: #FFFFEA; 
+    border-radius: 50px; 
+    border: 0.15px rgba(84.26, 84.26, 84.26, 0.80) solid;
+}
+
+.membershiptext > .text{
+    left: 54px; top: 8px; 
+    position: absolute; 
+    text-align: center; 
+    color: #545454; 
+    font-size: 24px;
+    font-weight: 500; 
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+
 .container > .membershipInfo{
     width: 231px; height: 33px; 
     left: 130px; top: 212px; position: absolute; 

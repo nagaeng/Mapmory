@@ -28,8 +28,8 @@ class Post(models.Model):
     tagging = models.ManyToManyField(Tag, through='PostTag', related_name='tagged_posts')
 
     def __str__(self):
-
         return self.title
+
 class PostTag(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
