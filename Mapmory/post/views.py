@@ -10,8 +10,6 @@ from django.core.serializers import deserialize
 import os
 from django.conf import settings
 
-
-
 def post_form_view(request):
     fixture_file = os.path.join(settings.BASE_DIR, 'post','fixtures','hashtags.json')
     with open(fixture_file, 'r') as f:
@@ -50,7 +48,7 @@ def get_hashtag_json(request):
         {"name": "#Good_for_dating"},
         {"name": "#Funny"}
     ]
-    return JsonResponse(hashtag, safe=False) 
+    return JsonResponse(hashtag, safe=False)
 
 @login_required
 def create_post(request, username):
@@ -78,8 +76,3 @@ def create_post(request, username):
 
 def end_view(request):
     return render(request, 'end.html')
-
-
-
-
-

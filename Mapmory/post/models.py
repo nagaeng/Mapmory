@@ -10,8 +10,7 @@ class Hashtag(models.Model):
     def __str__(self):
         return self.name
     
-
-
+    
 #글 작성
 class Post(models.Model):
     title = models.CharField(max_length=60, verbose_name='제목')
@@ -22,4 +21,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-

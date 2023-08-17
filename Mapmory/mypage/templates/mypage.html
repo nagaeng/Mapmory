@@ -15,7 +15,6 @@
     <p>닉네임: {{ user_profile.nickname }}</p>
     <p>나이: {{ user_profile.age }}</p>
     <p>여행 스타일: {{ user_profile.travel_style }}</p>
-    <!-- <p>자주 쓰는 키워드: {{ user_profile.keywords }}</p> -->
 
     {% csrf_token %}
     <a href="{% url 'mypage:edit_profile' %}">내 정보 수정하기</a>
@@ -32,9 +31,8 @@
         {% else %}
             글 수정: {{ post.title }}
         {% endif %}
-</li>
-{% endfor %}
-
+        </li>
+    {% endfor %}
     </ul>
 </body>
 </html>
