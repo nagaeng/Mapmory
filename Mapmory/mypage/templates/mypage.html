@@ -27,7 +27,7 @@
             <p>
                 {% if user_profile.profile_picture %}
                 <div class="profileImage">
-                    <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진" style="border-radius: 100%;">
+                    <img src="{{ user_profile.profile_picture.url }}" alt="프로필 사진" style="border-radius: 100%; width: 100px; height: 100px;">
                 </div>
                     
                 {% else %}
@@ -44,10 +44,7 @@
 
         </div>
         
-    </div>
-    
-    <!-- <p>자주 쓰는 키워드: {{ user_profile.keywords }}</p> -->
-
+  </div>
     
     
     <div class="mywriting" style="width: 334px; height: 240px; left: 30px; top: 387px; position: absolute">
@@ -74,18 +71,18 @@
     </div>
 
     <!--네비바-->
-    <div class="naviBar" style="width: 332px; height: 59px; left: 20px; top: 689.50px; position: absolute">
-        <div class="naviBackground">
+    <div class="naviBackground">
 
-            <a href={% url 'post:post_form' %}>
-                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 20px; position: absolute; font-size: 30px;">edit</span>
-            </a>
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
+        </a>
 
-            <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 90px; position: absolute; font-size: 30px;">location_on</span>
+        <span class="material-icons" style="left: 90px;">location_on</span>
 
-            <a href={% url 'accounts:home' %} >
-                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 160px; position: absolute; font-size: 30px;">home</span>
-            </a>
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
+
 
             <a href={% url 'mypage:mypage' %} >
                 <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 230px; position: absolute; font-size: 30px;">person</span>
@@ -95,6 +92,12 @@
             <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 300px; position: absolute; font-size: 30px;">settings</span>
               </a>   
         </div>
+
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
+        <span class="material-icons" style="left: 300px;">settings</span>
+
     </div>
     
 </body>

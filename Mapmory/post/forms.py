@@ -4,7 +4,7 @@ from .models import Post, Hashtag, Photo
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title','contents']
+        fields = ['title','contents', 'location']
 
 class PhotoForm(forms.ModelForm):
     class Meta:

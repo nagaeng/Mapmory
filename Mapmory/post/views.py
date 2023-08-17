@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Post, Hashtag, Photo
+from .models import Post, Hashtag, Photo, Tag
 from .forms import PostForm, PhotoForm
 from django.forms import inlineformset_factory
 from accounts.models import CustomUser
@@ -10,12 +10,8 @@ import json
 from django.core.serializers import deserialize
 import os
 from django.conf import settings
-
 from django.db.models import Q
 from django.utils import timezone
-
-
-
 
 def post_form_view(request):
     fixture_file = os.path.join(settings.BASE_DIR, 'post','fixtures','hashtags.json')
@@ -55,7 +51,7 @@ def get_hashtag_json(request):
         {"name": "#Good_for_dating"},
         {"name": "#Funny"}
     ]
-    return JsonResponse(hashtag, safe=False) 
+    return JsonResponse(hashtag, safe=False)
 
 @login_required
 def create_post(request, username):
@@ -69,8 +65,17 @@ def create_post(request, username):
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
-            post.datetime = timezone.now()
+            post.datetime = timezone.now()            
             post.save()
+            content = request.POST.get('contents') # 본문을 content에 저장
+            c_list = content.split(' ') # 공백으로 분리
+
+            for c in c_list:
+                if c.startswith('#'): # 만약 #이 붙어있으면 tag 객체를 이용하여 저장한다
+                    tag_name = c[1:]
+                    tag, created = Tag.objects.get_or_create(tag_content=tag_name)
+                    post.tagging.add(tag) 
+  
             for hashtag_name in selected_hashtags:
                 hashtag, created = Hashtag.objects.get_or_create(name=hashtag_name)
                 post.hashtag.add(hashtag)
@@ -97,8 +102,4 @@ def hashtag_posts(request, hashtag_name):
 def post_detail(request, username):
     post = get_object_or_404(Post, pk=username)
     return render(request, 'post_detail.html', {'post': post})
-
-
-
-
 

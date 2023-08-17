@@ -3,15 +3,16 @@
 <head>
     <title>홈화면</title>
     <!--배경색, 폰트-->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
     <!--아이콘-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--글쓰기->해시태그선택-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/_2home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_2home.css' %}?v=2">
+
 </head>
 <body>
     <!--나의지도 텍스트-->
-    <div class="myMap">나의 지도</div>
+    <div class="myMap">맵모리</div>
 
     <!--위치아이콘-->
     <div class="IconLocationPin">
@@ -20,26 +21,66 @@
         </span>
     </div>
 
+    <!-- 카카오맵 api -->
+    <div id="map" style="width: 311px; height: 421px; left: 40px; top: 154px; position: absolute; border-radius: 10%;"></div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a489df135a8696c14c71def3da7be43e&libraries=services"></script> 
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.591244, 127.022135), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+        
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+        
+        // 지도를 클릭한 위치에 표출할 마커입니다
+        var marker = new kakao.maps.Marker({ 
+            // 지도 중심좌표에 마커를 생성합니다 
+            position: map.getCenter() 
+        }); 
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+        
+        // 지도에 클릭 이벤트를 등록합니다
+        // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+            
+            // 클릭한 위도, 경도 정보를 가져옵니다 
+            var latlng = mouseEvent.latLng; 
+            
+            // 마커 위치를 클릭한 위치로 옮깁니다
+            marker.setPosition(latlng);
+            
+            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+            message += '경도는 ' + latlng.getLng() + ' 입니다';
+            
+            var resultDiv = document.getElementById('clickLatlng'); 
+            resultDiv.innerHTML = message;
+            
+            
+        });
+    </script>
+    
+
 
     <!--네비바-->
-    <div class="naviBar" style="width: 332px; height: 59px; left: 20px; top: 689.50px; position: absolute">
-        <div class="naviBackground">
+    <div class="naviBackground">
 
-            <a href={% url 'post:post_form' %}>
-                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 20px; position: absolute; font-size: 30px;">edit</span>
-            </a>
+        <a href={% url 'post:post_form' %}>
+            <span class="material-icons" style="left: 20px;">edit</span>
+        </a>
 
-            <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 90px; position: absolute; font-size: 30px;">location_on</span>
+        <span class="material-icons" style="left: 90px;">location_on</span>
 
-            <a href={% url 'accounts:home' %} >
-                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 160px; position: absolute; font-size: 30px;">home</span>
-            </a>
+        <a href={% url 'accounts:home' %} >
+            <span class="material-icons" style="left: 160px;">home</span>
+        </a>
 
-            <a href={% url 'mypage:mypage' %} >
-                <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 230px; position: absolute; font-size: 30px;">person</span>
-            </a>
+        <a href={% url 'mypage:mypage' %} >
+            <span class="material-icons" style="left: 230px;">person</span>
+        </a>
 
-            <span class="material-icons" style="color: rgba(84.26, 84.26, 84.26, 0.80); width: 26px; height: 26px; top: 19px; left: 300px; position: absolute; font-size: 30px;">settings</span>
-        </div>
+        <span class="material-icons" style="left: 300px;">settings</span>
     </div>
+
 </body>
