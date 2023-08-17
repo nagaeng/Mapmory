@@ -1,12 +1,143 @@
+<!--config_home-->
+{% load static %}
 <!DOCTYPE html>
 <head>
+    <!--배경색, 폰트-->
+       <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!--아이콘-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--글쓰기->해시태그선택-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/_2home.css' %}">
+      <link rel="stylesheet" href="{% static 'css/_settings1.css' %}">
+     <script src="{%static 'js/script.js'%}"></script>
+</head>
+    
 </head>
 <body>
-    <div>
-        <h3>환경설정</h3><br>
-        <h3><a href={% url 'ko_en' %}>언어 변경</a></h3>
-        <h3><a href={% url 'dark_mode' %}>다크 모드</a></h3>
-        <h3><a href={% url 'notification' %}>알림 설정</a></h3>
-        <h3><a href={% url 'config_security' %}>보안</a></h3> 
+    <div class="container">
+        
+            <div class="setting2">
+              <div class="korean-text">
+                <div class="text" style=" font-size: 24px;text-align: center;width: 700px;height:20px ;">
+                     설정
+                </div>
+            </div>
+            <div class="english-text">
+              <div class="text" style=" font-size: 24px;text-align: center;width: 700px;height:20px ;">
+                     setting
+                </div>
+            </div>
+            </div>
     </div>
+    <div class="container">
+        <div class="setting1">
+          <div class="korean-text">      
+            <div class="text "> 언어 설정</div>
+          </div>
+          
+          <div class="english-text">      
+            <div class="text "> Language</div>
+          </div>
+          <div class="korean-text">  
+            <div class="text" >다크 모드</div>
+          </div>
+          <div class="english-text">  
+            <div class="text" >Dark mode</div>
+          </div>
+          <div class="korean-text">  
+            <div class="text" >알림 설정</div>
+          </div>
+          <div class="english-text">  
+            <div class="text" >push setting</div>
+          </div>
+          <div class="korean-text">  
+            <div class="text" >보안</div>
+          </div>
+          <div class="english-text">  
+            <div class="text" >Security</div>
+          </div>
+            
+            
+        </div>
+
+    </div>
+</div>
+
+  
+
+   
+
+   
+    
+  
+
+        <!--보안-->
+    <a href="{% url 'config_security' %}">
+        <div style="position: absolute; left: 265px; top: 220px;">
+            <button class="Rectangle5" id="bar" style="border: none;">
+        <div>
+        <img class="bar3" style="width: 30px; height: 30px; left: 54px; top: 130px; position: absolute;"
+             src="{% static 'img/bar3.png' %}" />
+        </div>
+            </button>
+        </div>
+    </a>
+    <!--언어 설정-->
+    <a href="{% url 'ko_en' %}">
+        <div style="position: absolute; left: 265px; top: 10px;">
+            <button class="Rectangle5" id="bar" style="border: none;">
+        <div>
+        <img class="bar3" style="width: 30px; height: 30px; left: 54px; top: 130px; position: absolute;"
+             src="{% static 'img/bar3.png' %}" />
+        </div>
+            </button>
+        </div>
+    </a>
+    <!--다크 모드-->
+    <a href="{% url 'dark_mode' %}">
+        <div style="position: absolute; left: 265px; top: 70px;">
+            <button class="Rectangle5" id="bar" style="border: none;">
+        <div>
+        <img class="bar3" style="width: 30px; height: 30px; left: 54px; top: 130px; position: absolute;"
+             src="{% static 'img/bar3.png' %}" />
+        </div>
+            </button>
+        </div>
+    </a>
+    <a href="{% url 'notification' %}">
+        <div style="position: absolute; left: 265px; top: 138px;">
+            <button class="Rectangle5" id="bar" style="border: none;">
+        <div>
+        <img class="bar3" style="width: 30px; height: 30px; left: 54px; top: 130px; position: absolute;"
+             src="{% static 'img/bar3.png' %}" />
+        </div>
+            </button>
+        </div>
+    </a>
+    <div style="position: absolute; left: 35px; top: 20px;">
+            <button class="dark-button" id="darkModeToggle"style="position: absolute; left: 330px; top: 190px; border: none; padding: 0; margin: 0;" onclick="toggleDarkMode()">
+            <div>
+        <img class="bar3" style="width: 30px; height: 30px; left: 54px; top: 130px; position: absolute;"
+             src="{% static 'img/bar3.png' %}" />
+        </div>
+            </button>
+        </div>
+    
+
+     
+     
+     
+
+
+          
+     
+</div>
+
 </body>
+    
+
+     
+     
+
+
+          

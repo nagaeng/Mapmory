@@ -1,0 +1,57 @@
+.Rectangle5 {
+    position: absolute;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    background: none;
+}
+
+  .korean-text,
+  .english-text {
+    display: block;
+  }
+
+  .english-text {
+    display: none;
+  }
+    .dark {
+      border: none;
+      outline: none;
+      border-radius: 100px;
+      background: none;
+    }
+
+    :root {
+      --bg-color-light: white;
+      --text-color-light: black;
+      --bg-color-dark: black;
+      --text-color-dark: white;
+    }
+
+    body {
+      background-color: var(--bg-color-light);
+      color: var(--text-color-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    .dark-button {
+      position: absolute;
+      left: 350px;
+      top:180px;
+      
+      transform: translateX(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      display: none;
+    }
+
+    .dark-button img {
+      width: 30px;
+      height: 30px;
+    }

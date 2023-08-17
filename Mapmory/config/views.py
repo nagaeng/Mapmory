@@ -1,7 +1,7 @@
 from django.shortcuts import render
 # 언어 변경
 from django.utils import translation
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 #비밀번호 변경
 from django.shortcuts import render, redirect
@@ -58,6 +58,7 @@ def change_password(request):
     return render(request, 'change_password.html')
   else:
     return render(request, 'change_password.html')
+  
 # 연결된 이메일
 def show_email(request):
     user = request.user
@@ -65,7 +66,31 @@ def show_email(request):
       return render(request, 'email.html', {'email':None})
     return render(request, 'email.html', {'email': user.email})
 
+def config_secuity(request):
+  return render (request, 'security.html')
 
+
+#다크모드
+def dark_mode(request):
+  dark_mode_enabled = request.session.get('dark_mode', False)
+
+  context = {
+        'DARK_MODE': dark_mode_enabled,
+    }
+  return render(request, 'dark_mode.html', context)
+def toggle_dark_mode(request):
+    # Toggle the dark mode setting in the session
+    current_dark_mode = request.session.get('dark_mode', False)
+    request.session['dark_mode'] = not current_dark_mode
+    request.session.modified = True
+    return JsonResponse({'success': True})
+
+#알림설정
+def notification(request):
+  return render(request, 'notification.html')
+
+def ko_en(request):
+   return render(request, 'lang_url.html')
 
 
 
