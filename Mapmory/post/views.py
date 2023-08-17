@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Post, Hashtag, Photo
+from .models import Post, Hashtag, Photo, Tag
 from .forms import PostForm, PhotoForm
 from django.forms import inlineformset_factory
 from accounts.models import CustomUser
@@ -69,8 +69,17 @@ def create_post(request, username):
         if form.is_valid():
             post = form.save(commit=False)
             post.writer = request.user
-            post.datetime = timezone.now()
+            post.datetime = timezone.now()            
             post.save()
+            content = request.POST.get('contents') # 본문을 content에 저장
+            c_list = content.split('') # 공백으로 분리
+
+            for c in c_list:
+                if c.startswith('#'): # 만약 #이 붙어있으면 tag 객체를 이용하여 저장한다
+                    tag_name = c[1:]
+                    tag, created = Tag.objects.get_or_create(tag_content=tag_name)
+                    post.tagging.add(tag) 
+  
             for hashtag_name in selected_hashtags:
                 hashtag, created = Hashtag.objects.get_or_create(name=hashtag_name)
                 post.hashtag.add(hashtag)
