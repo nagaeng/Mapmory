@@ -70,7 +70,9 @@ def edit_post(request, post_id):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('mypage:my_posts')
+            return redirect('mypage:mypage')
+        else :
+            print(form.errors)
     else:
         form = PostForm(instance=post)
 
