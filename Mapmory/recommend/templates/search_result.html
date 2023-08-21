@@ -26,20 +26,22 @@
         #{{ hashtag_name }} {% trans "추천 장소" %}
         {% endblock %}
     </div>
-    
-    <ul class="ul">
-        {% for post in posts %}
-            <li>
-                <div class="background">
-                    <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
-                    {% for photo in post.photo_set.all %}
-                        <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
-                    {% endfor %}
-                </div>
-                
-            </li>
-        {% endfor %}
-    </ul>
+
+    <div class="scroll">
+        <ul class="ul">
+            {% for post in posts %}
+                <li>
+                    <div class="background">
+                        <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
+                        {% for photo in post.photo_set.all %}
+                            <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
+                        {% endfor %}
+                    </div>
+                    
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
     <!--네비바-->
     <div class="naviBackground">
