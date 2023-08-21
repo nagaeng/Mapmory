@@ -46,7 +46,7 @@ form > input{
     padding-top: 20px;
 }
 
-.li > a{
+/* .li > a{
     text-decoration: none;
     color: #545454;
     padding-left: 10px;
@@ -54,6 +54,25 @@ form > input{
 
 .li > img{
     padding-left: 10px;
+    border-radius: 10%;
+} */
+
+.post-content {
+    display: flex;
+    align-items: center;
+}
+
+.post-content > a {
+    text-decoration: none;
+    color: #545454;
+    padding-left: 10px;
+}
+
+.photo-container {
+    padding-left: 10px;
+}
+
+.photo-container > img {
     border-radius: 10%;
 }
 
