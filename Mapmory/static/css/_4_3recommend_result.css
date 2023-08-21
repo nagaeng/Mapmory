@@ -19,7 +19,6 @@ form > input{
 
 .ul{
     left: -30px; top: -30px; position: absolute;
-    list-style-type: none;
 }
 
 .li{
@@ -60,7 +59,7 @@ form > input{
 .post-content {
     display: flex;
     flex-direction: column; /* Change the layout direction */
-    align-items: center;
+    align-items: left;
     text-align: center; /* Center align text content */
 }
 
