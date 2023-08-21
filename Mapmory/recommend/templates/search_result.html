@@ -30,7 +30,7 @@
     <div class="scroll">
         <ul class="ul">
             {% for post in posts %}
-                <li>
+                <li class="li">
                     <div class="background">
                         <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
                         {% for photo in post.photo_set.all %}
