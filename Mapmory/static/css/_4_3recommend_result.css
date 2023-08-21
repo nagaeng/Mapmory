@@ -18,6 +18,7 @@ form > input{
 }
 
 .ul{
+    left: -30px; top: -30px; position: absolute;
     list-style-type: none;
 }
 
