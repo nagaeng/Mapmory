@@ -37,7 +37,7 @@ form > input{
 .scroll{
     overflow-x: auto; white-space: nowrap;
     width: 311px; 
-    height: 230px; 
+    height: 530px; 
     left: 30px; top: 180px; 
     position: absolute; 
     background: rgba(210, 232, 154, 0.79); 
