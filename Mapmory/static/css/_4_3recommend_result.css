@@ -50,13 +50,9 @@ form > input{
     text-decoration: none;
     color: #545454;
     padding-left: 10px;
-    left: 0px; top: 0px; 
-    position: absolute; 
 }
 
 .li > img{
-    left: 0px; top: 5px; 
-    position: absolute; 
     padding-left: 10px;
     border-radius: 10%;
 }
