@@ -60,7 +60,7 @@ form > input{
     display: flex;
     flex-direction: column; /* Change the layout direction */
     align-items: left;
-    text-align: center; /* Center align text content */
+    text-align: left; /* Center align text content */
 }
 
 .post-content > a {
