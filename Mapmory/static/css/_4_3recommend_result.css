@@ -18,7 +18,7 @@ form > input{
 }
 
 .ul{
-    left: -30px; top: -30px; position: absolute;
+    left: -30px; top: -10px; position: absolute;
 }
 
 .li{
