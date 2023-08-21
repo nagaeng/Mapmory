@@ -35,7 +35,7 @@
                         <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
                         <div class="photo-container">
                             {% for photo in post.photo_set.all %}
-                                <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
+                                <img src="{{ photo.image.url }}" alt="Post Image" width="300" height="200">
                             {% endfor %}
                         </div>
                     </div>
