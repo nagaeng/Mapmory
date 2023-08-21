@@ -31,15 +31,19 @@
         <ul class="ul">
             {% for post in posts %}
                 <li class="li">
+                    <div class="post-content">
                         <a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a>
-                        {% for photo in post.photo_set.all %}
-                            <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
-                        {% endfor %}
-                    
+                        <div class="photo-container">
+                            {% for photo in post.photo_set.all %}
+                                <img src="{{ photo.image.url }}" alt="Post Image" width="200" height="200">
+                            {% endfor %}
+                        </div>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
     </div>
+
 
     <!--네비바-->
     <div class="naviBackground">
