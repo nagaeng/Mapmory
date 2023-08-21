@@ -59,7 +59,9 @@ form > input{
 
 .post-content {
     display: flex;
+    flex-direction: column; /* Change the layout direction */
     align-items: center;
+    text-align: center; /* Center align text content */
 }
 
 .post-content > a {
@@ -70,7 +72,10 @@ form > input{
 }
 
 .photo-container {
-    padding-left: 10px;
+    padding-top: 10px; /* Adjust top padding */
+    display: flex; /* Display images in a row */
+    justify-content: center; /* Center align images horizontally */
+    gap: 10px; /* Add spacing between images */
 }
 
 .photo-container > img {
