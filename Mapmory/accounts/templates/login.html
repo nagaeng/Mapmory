@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <!--배경색, 폰트-->
-        <link rel="stylesheet" media=" all and (max-width: 768px)" type="text/css" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
         <!--로그인-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/_1login.css' %}">
 
@@ -15,7 +15,6 @@
      
     <body>
         
-        @media{
         {% block contents %}
         <form method="POST" action="{% url 'accounts:login_view' %}">
             {% csrf_token %}
