@@ -42,13 +42,13 @@ form > input{
     padding-top: 20px;
 }
 
-.background > a{
+.li > a{
     text-decoration: none;
     color: #545454;
     padding-left: 10px;
 }
 
-.background > img{
+.li > img{
     padding-left: 10px;
     border-radius: 10%;
 }
