@@ -22,8 +22,17 @@ form > input{
 }
 
 .li{
+    display:inline-block;
     float: left;
 }
+.scroll::-webkit-scrollbar {
+    width: 1vw;
+}
+.scroll::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 42%, 0.29);
+    border-radius: 100px;
+}
+
 .background{
     left: 30px; top: 180px; position: absolute;
     width: 312px; height: 229px; 
