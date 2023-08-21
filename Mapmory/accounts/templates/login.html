@@ -13,6 +13,9 @@
         
     </head>
     <body>
+        @media all and (max-width: 768px){
+
+        
         {% block contents %}
         <form method="POST" action="{% url 'accounts:login_view' %}">
             {% csrf_token %}
@@ -66,6 +69,6 @@
             {% endblock %}
             </div>
         </form>
-        
+        }
     </body>
 </html>
