@@ -20,7 +20,6 @@
             <div class="mypagetextback">
                 <div class="back"></div>
             </div>
-            {}
             <div class="text">{% trans "마이페이지" %}</div>
         </div>
 
@@ -49,7 +48,7 @@
                 <img src="{{ photos.image.url }}" alt="Post Photo" width="200">
             {% endfor %}
 
-            <button type="submit">{% trans "수정하기" %}</button>
+            <button type="submit" style="color: #545454;">{% trans "수정하기" %}</button>
             {% endblock %}
         </form>
     </body>
