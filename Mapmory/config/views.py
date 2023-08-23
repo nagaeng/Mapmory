@@ -46,7 +46,7 @@ def change_password(request):
         user.save()
         messages.success(request, 'Password has been changed successfully.')
         auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return redirect('config_security') # 비밀번호 변경 완료 후 넘어갈 페이지 url
+        return redirect('settings:config_security') # 비밀번호 변경 완료 후 넘어갈 페이지 url
       else:
         messages.error(request, 'Password not same')
     else:
@@ -64,16 +64,6 @@ def show_email(request):
 
 def config_secuity(request):
   return render (request, 'security.html')
-
-
-#다크모드
-def dark_mode(request):
-  dark_mode_enabled = request.session.get('dark_mode', False)
-
-  context = {
-        'DARK_MODE': dark_mode_enabled,
-    }
-  return render(request, 'dark_mode.html', context)
 
 
 
